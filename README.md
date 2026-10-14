@@ -1,3 +1,40 @@
+# Interaction Atlas · 个人交互素材库
+
+为不同项目长期积累的个人设计工具。入口是 dist/library.html，原 SUPERGEAR 研究页面保留在 dist/index.html。
+
+## 新增内容
+
+- 16 套独立 HTML 交互模板：实时体验、窄屏预览、源码查看与下载。
+- 16 个官方资源入口：组件系统、动效、三维与设计规范，分别附用途和官方链接。
+- 原有 24 个带图参考案例，在个人库中也能检索和收藏。
+- 自建链接条目、设计笔记、收藏、按场景筛选、关键词与笔记搜索。
+- JSON 导出与合并导入，保存名称、强调色、收藏、笔记和自建条目。
+- 同一浏览器首次进入个人库时，会迁移旧研究页面已收藏的案例。
+
+## 使用与迁移
+
+直接打开 dist/library.html，或访问 GitHub Pages 根网址。无需安装依赖。
+收藏和笔记只保存在当前浏览器的 localStorage，不会同步到 GitHub，也不会被其他访客看到。
+换设备、换网址、清理浏览器之前，请点击“导出备份”；在新环境点击“导入备份”。同 ID 条目的笔记以导入内容为准，其他条目会合并。自建条目最多 500 个，备份文件最多 2 MB。
+浏览器不允许本地存储时仍可临时使用，但应导出备份。在线版与 file:// 本地版的收藏互相独立。
+
+## 带走通用模板
+
+dist/template-kit.zip 包含 16 个 HTML 与使用说明，任何一个都能独立打开。模板包不包含公司 logo、产品图、第三方截图或网络依赖。它们是本项目编写的示例，可作为个人或商业项目的开发起点；表单、价格、购物清单和任务进度等需换成真实业务逻辑后再发布。
+个人库的“个性设置”可修改名称与强调色；单个模板下载会使用当前强调色，整包下载为默认色。
+原 SUPERGEAR 产品素材和第三方案例图片仍只用于其原有项目及研究参考，并不包含在通用模板包中。
+
+## 维护
+
+- dist/library.html / library.css / library.js：个人库页面、样式与交互。
+- scripts/build-library.cjs：16 套模板与 16 个资源的数据源。运行 node scripts/build-library.cjs 更新 library-data.js 和独立模板 HTML。
+- dist/templates/：独立模板文件。修改生成器后应重新打包 template-kit.zip。
+- dist/cases.js：原 24 个参考案例及配图来源。
+
+资源核对日期：2026-10-14。官方资源为入口级核对，不表示所有示例都已实测或可以免费商用，具体授权以原站为准。
+
+---
+
 # SUPERGEAR · 交互灵感实验室
 
 面向产品、设计和开发团队的交互式研究案例库。黑黄品牌风格，24 个参考案例、4 个可操作实验、20 个扩展方向。
@@ -49,6 +86,6 @@ SUPERGEAR 品牌和产品素材由项目方提供。参考品牌、案例及截�
 
 ## GitHub Pages
 
-仓库根目录的 index.html 会转到 dist/index.html。在 Settings → Pages 中选择 Deploy from a branch，分支 main，目录 / (root)，然后 Save。启用后访问 https://qihangwu74-create.github.io/supergear-interaction-atlas/ 。尚未启用时该地址不会显示项目。
+仓库根目录的 index.html 现在会转到 dist/library.html，原研究页面仍可通过导航进入。在 Settings → Pages 中选择 Deploy from a branch，分支 main，目录 / (root)，然后 Save。启用后访问 https://qihangwu74-create.github.io/supergear-interaction-atlas/ 。
 
 所有页面配图均位于 dist/assets，使用相对路径，不依赖第三方图片外链。
