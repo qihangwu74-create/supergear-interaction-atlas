@@ -1,0 +1,53 @@
+const fs=require('fs'),path=require('path');
+const root=path.resolve(__dirname,'..'),out=path.join(root,'dist');
+const shot=(name,copy,language,props)=>({name,copy,language,...props});
+const films=[
+ ['anatomy','一件产品，如何被理解','explode','从完整外形进入内部，再回到使用者眼中的整体。','产品 / 工业 / 结构',[
+ shot('建立对象','先看清同一件产品的完整轮廓。接下来要回答：这些层次怎样共同组成它？','建立镜头 · 全景交代主体与地面关系',{distance:8.8,az:.55}),
+ shot('找到接缝','推近顶盖和密封环，先告诉用户接下来要打开哪里。','推镜 · 视线目标沿主体缓慢上移',{distance:4.5,y:.55,az:.55,el:.25}),
+ shot('展开层次','保持同一侧观察，将五层结构分开；顶盖附属件一起移动。','拉远配合拆解 · 不越轴，给展开留出空间',{distance:10.5,y:0,az:.55,explode:1}),
+ shot('连接作用','侧向小幅环绕，确认这些层次沿同一轴装配，而不是互不相干的零件。','有限环绕 · 维持视线方向与层级对应',{distance:9.8,az:1.25,explode:1}),
+ shot('回到整体','装配复位并回到起始构图，让内部理解与外部形态建立对应。','回归镜头 · 首尾相同构图帮助比较',{distance:8.8,az:.55,explode:0})],
+ '你看过接缝、层次和装配轴，再回到完整对象。示意结构不代表真实产品工程。'],
+ ['surface','材质为什么看起来不同','material','固定对象，用光位和表面状态解释变化。','材质 / 美妆 / 产品',[
+ shot('建立基准','先记录当前表面与高光位置；后续每次只改变一个主要变量。','中景 · 稳定基准构图',{distance:7.8,az:.65,rough:.15,light:.6}),
+ shot('靠近表面','推近主体，让高光边缘变成可观察的信息。','细节推镜 · 保持光位不变',{distance:4.8,az:.65,rough:.15,light:.6}),
+ shot('改变粗糙度','镜头保持不动，只提高粗糙度，观察反光由集中变得分散。','锁定镜头 · 控制变量比较',{distance:4.8,az:.65,rough:.85,light:.6}),
+ shot('移动光源','保持粗糙度，移动主光。高光的变化说明光位也影响材质判断。','固定观察点 · 让主光环绕',{distance:4.8,az:.65,rough:.85,light:2.6}),
+ shot('回看结果','拉回整体。你现在能把粗糙度和光位两种变化区分开。','收束镜头 · 细节回到整体语境',{distance:7.8,az:.65,rough:.85,light:2.6})],
+ '材质观感由表面参数与照明共同产生；这里是渲染示意，不是实物色准判断。'],
+ ['gallery','带着目的穿过展廊','room','先建立空间地图，再按动线接近作品。','展览 / 房产 / 作品集',[
+ shot('先见全貌','五个展品按位置排开。先交代空间，避免用户进入后失去方向。','建立镜头 · 全景保留五个位置',{distance:12,az:0,el:.2,x:0,z:-1}),
+ shot('进入左侧','把注意力带到第一组作品，镜头沿原有横轴平移。','横向移镜 · 不穿墙、不倒置方向',{distance:5.6,az:.1,el:.12,x:-2.8,z:-1}),
+ shot('停留中心','在中心作品前留出停顿，信息区解释此刻观察的对象。','驻留中景 · 观看节奏由用户决定',{distance:4.8,az:.1,el:.12,x:0,z:-1}),
+ shot('到达右侧','继续同方向移动，完成从入口到终点的明确路径。','连续移镜 · 同一空间轴线',{distance:5.6,az:.1,el:.12,x:2.8,z:-1}),
+ shot('复原地图','回到全景，作品细节重新落回它在空间中的位置。','拉回总览 · 帮助形成空间记忆',{distance:12,az:0,el:.2,x:0,z:-1})],
+ '路径完成：左侧 → 中心 → 右侧 → 总览。展品和空间均为原创几何示意。'],
+ ['fit','从造型到配置决定','configurator','镜头追随决策问题：长什么样、哪里变化、整体如何。','家具 / 配置器 / 电商',[
+ shot('认识对象','先看一把带扶手的椅子，建立配置前的基准。','三分之四全景 · 兼顾座面与靠背',{distance:8,az:.6,el:.25,scaleX:1,arms:1}),
+ shot('看清占地','镜头升高一些，给座面宽度一个容易判断的观察角度。','抬升观察 · 避免仅凭侧面判断宽度',{distance:6.4,az:.6,el:.65,scaleX:1,arms:1}),
+ shot('调整宽度','保持相同构图，让宽度变化成为画面中唯一主要变化。','锁定镜头 · 状态变化可直接比较',{distance:6.4,az:.6,el:.65,scaleX:1.35,arms:1}),
+ shot('查看扶手','从侧面确认扶手结构，再展示无扶手方案。','小幅侧移 · 变化发生在可见一侧',{distance:6,az:1.1,el:.25,scaleX:1.35,arms:0}),
+ shot('确认方案','回到起始视角，查看变宽、无扶手的完整结果。','匹配首镜 · 让结果与起点可比较',{distance:8,az:.6,el:.25,scaleX:1.35,arms:0})],
+ '最终示意配置：宽度 135%、无扶手。真实配置器还需接入规格、价格和可售约束。'],
+ ['route','跟随路线，看清过程','path','总览路线，再跟随节点，最后回收整体关系。','流程 / 科普 / 空间导览',[
+ shot('先交代路线','看到完整闭合路径和移动节点，建立起点与整体走向。','路线全景 · 先解释空间关系',{distance:9.5,az:.55,el:.4,route:0}),
+ shot('进入第一段','节点向上经过第一段。镜头略近，但保留前后路径作为方向线索。','跟随中景 · 不把路径完全裁掉',{distance:7,az:.65,el:.3,route:.23,y:.4}),
+ shot('越过转折','通过弯道时保持平滑推进。转折是流程中的阶段变化。','弧形移镜 · 用视角变化交代转折',{distance:7.2,az:1.25,el:.4,route:.5}),
+ shot('接近终点','镜头逐渐后撤，提前让观众看见路径即将闭合。','预告式拉远 · 先让终点进入视野',{distance:8.5,az:.8,el:.4,route:.8}),
+ shot('回到起点','节点完成一圈，镜头回到原构图。过程结束，整体关系仍然清楚。','闭环构图 · 首尾对应',{distance:9.5,az:.55,el:.4,route:1})],
+ '路径已闭合。可替换为工艺步骤、物流节点或参观路线；当前不代表真实交通数据。'],
+ ['lens','同一对象，五种镜头职责','orbit','把镜头语言变成可对照、可回看的设计模板。','品牌 / 教学 / 新品',[
+ shot('环境与主体','全景同时呈现物体与展台，回答它在哪里、大小关系如何。','全景 · 建立语境',{distance:11,az:.6,el:.25,fov:38}),
+ shot('形态与关系','推近到中景，强调主体的轮廓与层级关系。','中景 · 把注意力落在主体',{distance:7,az:.6,el:.25,fov:38}),
+ shot('细节与证据','镜头向上聚焦顶盖，细节成为前面判断的具体依据。','特写 · 解释一个明确细节',{distance:3.8,az:.6,el:.35,y:.7,fov:38}),
+ shot('另一侧的信息','拉开一点再环绕，让新侧面出现，同时保留已认识的顶盖。','有动机的环绕 · 揭示此前不可见的一面',{distance:6.4,az:1.65,el:.35,y:.4,fov:38}),
+ shot('理解后的整体','回到起始画面。这次看到的整体，包含刚才获得的细节理解。','回归镜头 · 完成叙事闭环',{distance:11,az:.6,el:.25,fov:38})],
+ '全景建立语境，中景建立关系，特写提供证据，环绕补充信息，回归整体完成理解。']
+].map(([id,title,mode,brief,tags,shots,result])=>({id:'s-film-'+id,mode,title,brief,tags:tags.split(' / '),cat:'动效叙事',type:'three',file:'three/film-'+id+'.html',image:'assets/three-film-'+id+'.webp',initial:0,color:'#d8e866',label:'故事进度',hint:'按“下一镜”逐步理解，或点击章节回看。',steps:'逐镜查看 → 观察每一镜的解释 → 拖动进度回看 → 在最后一镜确认结论。支持暂停与从头回看。',level:'叙事专题',adapt:'在 film.shots 中替换镜头目标、方位、距离、对象状态与说明。保持建立语境、揭示证据、回收结果的因果顺序；使用自己的模型时重新校验构图。',limit:'程序化三维示意；镜头不使用真实景深或光学对焦。减少动态偏好下章节切换立即完成。',film:{shots,result}}));
+const base=fs.readFileSync(path.join(out,'three/orbit.html'),'utf8');
+for(const d of films){let h=base.replace(/<title>.*?<\/title>/,`<title>${d.title} · Atlas Cinema</title>`).replace(/<h1>.*?<\/h1>/,`<h1>${d.title}</h1>`).replace(/startAtlas3D\(.*?\);/,`startAtlas3D(${JSON.stringify(d)});`).replace('value="35"','value="0"').replace('观察距离','故事进度');h=h.replace('<div class="controls">','<div class="film-panel" id="film-panel" hidden><div class="shot-head"><b id="shot-count"></b><span id="shot-language"></span></div><h2 id="shot-name"></h2><p id="shot-copy"></p><nav id="shot-nav" aria-label="镜头章节"></nav><div class="row"><button id="shot-prev">上一镜</button><button id="shot-next">下一镜 →</button></div><p id="film-result" role="status" hidden></p></div><div class="controls">').replace('<div class="row"><button class="swatch"','<div id="generic-tools"><div class="row"><button class="swatch"').replace('<div id="story"','</div><div id="story"').replace(/<small>.*?<\/small>/,`<small>${d.limit}</small>`);h=h.replace('模型观察 / 入门','镜头叙事 / 逐镜体验').replace('ATLAS / SPATIAL LAB · 01','ATLAS / CAMERA NARRATIVE');fs.writeFileSync(path.join(out,d.file),h);}
+fs.writeFileSync(path.join(out,'film-data.js'),'window.ATLAS_THREE.push(...'+JSON.stringify(films)+');');
+// Shared styles are maintained in dist/three-lab.css.
+fs.writeFileSync(path.join(out,'three','CAMERA-STORY-GUIDE.txt'),`镜头叙事 · 6 套原创三维流程\n\n${films.map(d=>d.title+'\n文件：'+d.file+'\n'+d.film.shots.map((s,i)=>(i+1)+'. '+s.name+' — '+s.language+'\n   '+s.copy).join('\n')+'\n结果：'+d.film.result).join('\n\n')}\n\n复用检查：每一镜要回答一个问题；运动必须揭示新信息；视线目标与对象状态同时设计；保留方向和参照物；给证据留出阅读停顿；允许暂停、倒回和跳章；结束时给出结论而不是无尽循环。\n`);
+console.log('6 cinematic narratives generated');
