@@ -26,9 +26,9 @@
   }
   function detail(id) {
     const c=cases.find(c=>c.id===id); currentId=id;
-    $('#detail-index').textContent=`CASE ${String(id).padStart(2,'0')} / 24 · ${names[c.cat]}`;
+    $('#detail-index').textContent=`CASE ${String(id).padStart(2,'0')} / ${cases.length} · ${names[c.cat]}`;
     const demo={config:'rules',compare:'compare',detail:'material',ar:'assembly',creative:'assembly'}[c.cat];
-    $('#detail-content').innerHTML=`<div class="detail-hero">${art(c)}</div><div class="detail-body">${imageCredit(c)}<p class="eyebrow">${esc(c.kind)}</p><h2 id="detail-title">${esc(c.name)}</h2><p class="lead">${esc(c.brief)}</p><div class="detail-actions"><a class="primary" href="${esc(c.links[0][1])}" target="_blank" rel="noopener noreferrer">打开官方案例 ↗</a>${saveButton(c,true)}<button class="secondary" data-jump="${demo}">体验相关机制 ↓</button></div><h3>怎么交互</h3><p>${esc(c.mechanism)}</p><h3>SUPERGEAR 可以借鉴什么</h3><p>${esc(c.value)}</p><details><summary>实现前提与核对范围</summary><p>${esc(c.cost)}</p><p><strong>${esc(c.status)}</strong> · 2026.10.14</p><p>A 表示仅完成文中列明的局部操作；B 依据官方页面或制作方说明；C 为历史参考，不代表当前仍能使用完整体验。</p></details><div class="detail-sources"><span>来源</span>${c.links.map(([label,url])=>`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`).join('')}</div></div>`;
+    $('#detail-content').innerHTML=`<div class="detail-hero">${art(c)}</div><div class="detail-body">${imageCredit(c)}<p class="eyebrow">${esc(c.kind)}</p><h2 id="detail-title">${esc(c.name)}</h2><p class="lead">${esc(c.brief)}</p><div class="detail-actions"><a class="primary" href="${esc(c.links[0][1])}" target="_blank" rel="noopener noreferrer">打开官方案例 ↗</a>${saveButton(c,true)}<button class="secondary" data-jump="${demo}">体验相关机制 ↓</button></div><h3>怎么交互</h3><p>${esc(c.mechanism)}</p><h3>SUPERGEAR 可以借鉴什么</h3><p>${esc(c.value)}</p><details><summary>实现前提与核对范围</summary><p>${esc(c.cost)}</p><p><strong>${esc(c.status)}</strong> · ${esc(c.imageDate||'2026.10.14')}</p><p>A 表示仅完成文中列明的局部操作；B 依据官方页面或制作方说明；C 为历史参考，不代表当前仍能使用完整体验。</p></details><div class="detail-sources"><span>来源</span>${c.links.map(([label,url])=>`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`).join('')}</div></div>`;
     $('#case-dialog').scrollTop=0;
   }
   document.addEventListener('click',e=>{

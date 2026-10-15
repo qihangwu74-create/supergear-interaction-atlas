@@ -570,5 +570,385 @@ window.CASES=[
     "imageLabel": "制作方案例截图",
     "imageSource": "https://lusion.co/projects/spatial_fusion/",
     "imageDate": "2026-10-14"
+  },
+  {
+    "id": 25,
+    "name": "Igloo Inc.",
+    "collectionCat": "三维运镜",
+    "kind": "冰雪场景与品牌形态",
+    "brief": "用一座冰屋，建立整个品牌世界。",
+    "image": "assets/case-27-igloo.webp",
+    "url": "https://www.igloo.inc/",
+    "mechanism": "首屏以冰雪地形、发光冰屋和动态构件建立世界观，提示向下探索。此次看到了冰屋构件的聚合与展开、景深和镜头位置变化。",
+    "steps": "等场景加载完成 → 先观察冰屋构件 → 向下滚动 → 留意主体、地形和文字如何共同维持方向感。",
+    "journey": [
+      "冰雪环境建立语境",
+      "构件变化吸引注意",
+      "继续探索品牌内容"
+    ],
+    "camera": "拆解角度：大环境先交代空间，主体保持画面中心，前景地形提供纵深；结构变化时仍然保留可识别的冰屋轮廓。",
+    "value": "适合品牌首屏、概念产品发布。先选一个能代表品牌的核心物体，再设计它的变化，避免堆砌无关特效。",
+    "cost": "高。需要三维场景、材质、动效和加载策略；本次仅核对首屏及滚动后的局部场景，不代表完整体验测试。",
+    "status": "A 首屏与局部滚动实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://www.igloo.inc/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://www.igloo.inc/"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 26,
+    "name": "The Boat · SBS",
+    "collectionCat": "互动叙事",
+    "kind": "滚动漫画与情绪节奏",
+    "brief": "让阅读的节奏，变成故事里的风浪。",
+    "image": "assets/case-28-boat.webp",
+    "url": "https://www.sbs.com.au/theboat/",
+    "source": [
+      "创作者介绍",
+      "https://www.matthuynh.com/stories/theboat-9rw43"
+    ],
+    "mechanism": "点击开始后进入水墨风暴与海船画面，滚动推进阅读；页面提供六个章节入口、声音与自动滚动控制。文字与画面一起构成难民旅途的叙事。",
+    "steps": "点击开始 → 缓慢滚动第一章 → 观察文字出现和船体倾斜的关系 → 用右侧章节导航比较不同段落。",
+    "journey": [
+      "风暴建立处境",
+      "滚动推进遭遇",
+      "章节切分情绪",
+      "文字回收人物意义"
+    ],
+    "camera": "拆解角度：用层叠画面、倾斜构图与尺度变化形成近似镜头的阅读感。停顿也是叙事的一部分，不必每一屏都持续运动。",
+    "value": "适合纪实专题、品牌历史、公益故事。先有可读的故事，再让动效加强处境与情绪。",
+    "cost": "中至高。需要分层插画、文本编排和声音设计；此次实测开场及第一章局部滚动，未通读六章。",
+    "status": "A 开场及第一章局部实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://www.sbs.com.au/theboat/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://www.sbs.com.au/theboat/"
+      ],
+      [
+        "创作者介绍",
+        "https://www.matthuynh.com/stories/theboat-9rw43"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 27,
+    "name": "Penderecki’s Garden",
+    "collectionCat": "空间导航",
+    "kind": "音乐、点云花园与章节导航",
+    "brief": "把一位音乐家的作品，变成可以走进的花园。",
+    "image": "assets/case-29-garden.webp",
+    "url": "https://www.pendereckisgarden.pl/en",
+    "mechanism": "进入后以点云般的花园和建筑承载章节入口。官网将庄园、公园、音乐厅、迷宫等场所对应不同内容，并提供音乐播放与季节选择。",
+    "steps": "进入花园 → 先看章节总览 → 选择一个场所 → 将它与所讲述的人物或音乐内容联系起来。",
+    "journey": [
+      "交代人物与花园",
+      "空间选择章节",
+      "进入具体内容",
+      "返回整体路径"
+    ],
+    "camera": "拆解角度：场所是目录，视点是阅读位置。切换章节时要让用户知道自己从哪里来、将进入哪里，不能只做漂亮转场。",
+    "value": "适合人物档案、博物馆、文化展览。用有真实意义的空间组织内容，比任意摆放热点更容易记忆。",
+    "cost": "高。需要场景和音频内容组织；本次进入章节总览并看到第一章场景，迷宫全流程未实测。",
+    "status": "A 进入与章节总览实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://www.pendereckisgarden.pl/en",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://www.pendereckisgarden.pl/en"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 28,
+    "name": "Weglot Like Magic",
+    "collectionCat": "游戏机制",
+    "kind": "手电筒探索与翻译答题",
+    "brief": "用“找到意思”的游戏，解释翻译的价值。",
+    "image": "assets/case-30-weglot.webp",
+    "url": "https://www.weglot-like-magic.com/",
+    "source": [
+      "制作方项目说明",
+      "https://www.refokus.com/projects/weglot-like-magic"
+    ],
+    "mechanism": "用手电筒寻找隐藏线索，判断外语词义，再按住答案确认。已实测开始游戏、出现题目，并提交一个正确答案得到 CORRECT 反馈。",
+    "steps": "开始 → 阅读规则 → 移动光束寻找线索 → 按住答案 → 观察正确反馈和下一题。",
+    "journey": [
+      "不理解的单词",
+      "探索可见线索",
+      "作出判断",
+      "即时反馈推进下一题"
+    ],
+    "camera": "拆解角度：固定舞台提供方向感，手电筒充当可移动的注意力窗口。把视觉焦点交给用户，答案与反馈仍固定在容易找到的位置。",
+    "value": "适合品牌教育、功能入门、知识问答。动作要模拟产品解决的问题，让玩法和品牌价值有因果关系。",
+    "cost": "中。可从二维遮罩和状态机做起；这是 2022 活动项目，不把当年的榜单和奖品视为仍有效。",
+    "status": "A 开始游戏与单题正确反馈实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://www.weglot-like-magic.com/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://www.weglot-like-magic.com/"
+      ],
+      [
+        "制作方项目说明",
+        "https://www.refokus.com/projects/weglot-like-magic"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 29,
+    "name": "Of the Oak",
+    "collectionCat": "空间导航",
+    "kind": "橡树生态与三维信息探索",
+    "brief": "从一棵树的整体，进入它承载的生态关系。",
+    "image": "assets/case-31-oak.webp",
+    "url": "https://oftheoak.co.uk/",
+    "source": [
+      "制作方项目说明",
+      "https://lusion.co/projects/of_the_oak/"
+    ],
+    "detailImage": "assets/case-31-oak-detail.webp",
+    "mechanism": "首页建立橡树的沉浸式场景；进入 Oak Species 后，树形结构、交互点和物种分类与说明并置。已进入 Birds 分类场景，页面提示滚动或点击热点探索。",
+    "steps": "先看首页大树 → 打开 Discover Oak Species → 阅读当前分类 → 再尝试热点和其他物种分组。",
+    "journey": [
+      "整体环境",
+      "树上的关系网络",
+      "物种分类与证据",
+      "重新理解整体生态"
+    ],
+    "camera": "拆解角度：环境全景负责建立对象，抽象树形与热点负责解释关系。镜头与表现方式的变化，服务于从感受转到理解。",
+    "value": "适合生态科普、复杂系统、产品内部关系。把美术场景和信息视图接起来，让用户能从震撼画面继续找到知识。",
+    "cost": "高。需要真实内容映射和三维优化；本次验证首页到物种分类入口，未逐个测试热点。",
+    "status": "A 首页到物种页面实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://oftheoak.co.uk/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://oftheoak.co.uk/"
+      ],
+      [
+        "制作方项目说明",
+        "https://lusion.co/projects/of_the_oak/"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 30,
+    "name": "Atlas Motion",
+    "collectionCat": "三维运镜",
+    "kind": "工业产品与过程叙事",
+    "brief": "从产品应用，走到结构和制造过程。",
+    "image": "assets/case-32-atlas.webp",
+    "url": "https://atlasmotion.com/",
+    "source": [
+      "制作方项目说明",
+      "https://lusion.co/projects/atlas_motion/"
+    ],
+    "mechanism": "页面将运动系统、无人机应用、电机结构与制造流程串联。点击 Process 后进入流程段落，画面转换为分件线框电机，文字对应 Integrate 等步骤。",
+    "steps": "看首屏应用语境 → 点击 Process → 观察电机拆解 → 继续阅读后续过程与制造说明。",
+    "journey": [
+      "产品用途",
+      "关键部件",
+      "开发制造过程",
+      "合作行动入口"
+    ],
+    "camera": "拆解角度：从应用场景转到孤立部件，再用线框和爆炸视图解释结构；减少环境干扰后，用户才能看清细节。",
+    "value": "适合硬件、工业设备、零件和材料介绍。与你的产品展示最接近：先说明装到哪里，再说明结构为何不同。",
+    "cost": "中至高。可组合视频、图片和局部实时三维；此次实测首页及 Process 入口，不把所有画面都认定为实时模型。",
+    "status": "A 首页与 Process 跳转实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://atlasmotion.com/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://atlasmotion.com/"
+      ],
+      [
+        "制作方项目说明",
+        "https://lusion.co/projects/atlas_motion/"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 31,
+    "name": "Unseen Studio",
+    "collectionCat": "空间导航",
+    "kind": "超现实空间与作品入口",
+    "brief": "先走进一种气质，再去认识工作室的作品。",
+    "image": "assets/case-33-unseen.webp",
+    "url": "https://unseen.co/",
+    "mechanism": "可选择无声音进入；首页通过水面、建筑、球体与字体叠加建立空间。导航提供作品入口和 World 探索入口。此次已进入无声音模式并确认主场景与导航。",
+    "steps": "选择 Enter without audio → 观察建筑框景与前后层次 → 再进入 View our work 或 World。",
+    "journey": [
+      "低门槛进入",
+      "空间建立风格",
+      "明确作品入口",
+      "转入具体项目"
+    ],
+    "camera": "拆解角度：门洞、阶梯和水面共同引导视线。空间表现很自由，但作品导航始终需要清楚，避免观众迷失在场景中。",
+    "value": "适合个人作品集、设计工作室、艺术品牌。让视觉风格成为第一印象，同时保留直接访问内容的路线。",
+    "cost": "高。空间质感依赖美术与性能平衡；本次未测试 World 的全部拖拽或长按机制。",
+    "status": "A 无声音进入及首页场景实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://unseen.co/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://unseen.co/"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 32,
+    "name": "Unseen · 2025 Wrapped",
+    "collectionCat": "动态排版",
+    "kind": "年度时间轴与作品编排",
+    "brief": "把一年作品，编排成有节奏的浏览旅程。",
+    "image": "assets/case-34-unseen-year.webp",
+    "url": "https://2025.unseen.co/",
+    "mechanism": "首屏以字符纹理和强对比标题建立节奏，按月份组织作品、实验和外链。官网内容包含品牌、网站、动效等项目，形成从一月到十二月的路径。",
+    "steps": "从首屏开始滚动 → 留意月份切分 → 选择一个项目入口 → 返回时间线继续浏览。",
+    "journey": [
+      "年度开场",
+      "月份推进",
+      "项目停留",
+      "下一年收束"
+    ],
+    "camera": "拆解角度：这里的“镜头”来自版式、尺度和滚动顺序。大标题是段落切点，作品画面是停留点，不需要全站三维才能讲好故事。",
+    "value": "适合个人年终作品集、团队总结、年度品牌报告。用时间顺序串联成果，比一次铺开几十张卡片更有节奏。",
+    "cost": "中。内容组织与媒体加载很关键；本次核对加载后首屏及官方月份内容，未逐月完整操作。",
+    "status": "B 官方内容核对与首屏截图",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://2025.unseen.co/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://2025.unseen.co/"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 33,
+    "name": "Symphony of Vines",
+    "collectionCat": "互动叙事",
+    "kind": "四章电影式品牌实验",
+    "brief": "冰川、河流、潮汐、土壤，讲清风土从何而来。",
+    "image": "assets/case-35-symphony.webp",
+    "url": "https://symphonyofvines.unseen.co/",
+    "mechanism": "Unseen 的实时叙事实验，以四章解释土地的形成；页面引导用户用光标或按住操作参与不同自然力量。此次进入体验并观察到河流及土壤章节，保留跳过章节入口。",
+    "steps": "进入体验 → 阅读本章操作提示 → 尝试移动光标或按住 → 看自然力量改变画面 → 留意下一章如何接续前因。",
+    "journey": [
+      "土地从何而来",
+      "冰川塑形",
+      "河流与潮汐改造",
+      "土壤与风土结果"
+    ],
+    "camera": "拆解角度：每章有独立视觉材质，但服务同一个因果链。广域场景交代力量，局部流动呈现过程，结尾把这些变化收回到风土。",
+    "value": "适合材料工艺、品牌起源、制造原理。最值得学的是让用户的动作对应叙事里的动词：塑造、流动、侵蚀、融合。",
+    "cost": "高。需要实时特效、镜头脚本与章节节奏；是工作室实验项目，不将其描述为已核验的商业酒庄业务。未测试全部输入方式。",
+    "status": "A 进入及中后段章节画面实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://symphonyofvines.unseen.co/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://symphonyofvines.unseen.co/"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
+  },
+  {
+    "id": 34,
+    "name": "OceanX · 2025 in Review",
+    "collectionCat": "三维运镜",
+    "kind": "环球航行与年度事件时间线",
+    "brief": "跟着船走，把年度事件放回发生的地方。",
+    "image": "assets/case-36-oceanx.webp",
+    "url": "https://2025.oceanx.org/",
+    "source": [
+      "制作方年度回顾",
+      "https://2025.unseen.co/"
+    ],
+    "mechanism": "由地球总览进入海面与研究船场景，页面提示滚动或横向拖拽探索。点击 Learn More 可进入事件正文，并提供 Back to Timeline 返回。此次已打开首章详情并操作返回。",
+    "steps": "进入 → 观察地球到海面视点变化 → 查看章节 → 打开 Learn More → 返回时间线。",
+    "journey": [
+      "全球总览",
+      "定位一次航行",
+      "事件内容展开",
+      "返回航线继续探索"
+    ],
+    "camera": "拆解角度：先用大尺度交代范围，再靠近船与事件。详情阅读暂时让位于平面排版，返回后继续空间路径，兼顾沉浸和阅读。",
+    "value": "适合年度报告、旅行路线、展会巡展、项目进程。让地点成为时间线的锚点，再用详情页承载证据。",
+    "cost": "高。需要地图/场景、事件内容和返回状态；此次验证首章，不代表所有七章与移动端均通过。",
+    "status": "A 进入、首章详情及返回操作实测",
+    "cat": "creative",
+    "edition": "2026-10-15",
+    "pick": true,
+    "imageLabel": "实际页面截图",
+    "imageSource": "https://2025.oceanx.org/",
+    "imageDate": "2026-10-15",
+    "links": [
+      [
+        "体验网站",
+        "https://2025.oceanx.org/"
+      ],
+      [
+        "制作方年度回顾",
+        "https://2025.unseen.co/"
+      ]
+    ],
+    "imageNote": "实拍页面用于设计研究；体验步骤是推荐观察路线，具体已验证范围见下方。镜头拆解与迁移建议为本素材库的设计分析。"
   }
 ];
