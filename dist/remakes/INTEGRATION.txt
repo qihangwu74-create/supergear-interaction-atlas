@@ -1,0 +1,32 @@
+ATLAS / 案例机制复现模板
+
+8 套原创模板，提炼参考网站的交互方法，不包含其品牌模型、插画、音轨或商业系统。
+
+1. 打开与替换
+整包解压后打开 HTML；保留 ../vendor/ 目录。在线素材库也可下载单个内嵌 Three.js 的 HTML。
+搜索 ATLAS_DEMO_CONFIG 修改 color、steps、copies、questions。title/en 用于生成页面，若直接编辑成品请同步修改 HTML 标题。模型在 runtime 中 configure/anatomy/voyage/garden/particles 分支，替换程序化几何即可。
+
+2. 页面内调用
+window.AtlasTemplate.setState({chapter:2});
+window.AtlasTemplate.setState({spec:'pro',color:'#b7cde0',battery:true,stand:true});
+window.AtlasTemplate.getState();
+window.AtlasTemplate.reset();
+window.addEventListener('atlas:change',e=>console.log(e.detail));
+chapter 从 0 开始。spec/color/battery/stand 作用于配置器，问答使用 questions 题库。价格为 CNY 示例，不连接电商服务。
+
+3. 嵌入现有页面
+<iframe src="remakes/anatomy.html" title="产品结构演示" style="width:100%;height:900px;border:0"></iframe>
+父页面可发 iframe.contentWindow.postMessage({type:'atlas:set',payload:{chapter:2}},'https://你的模板域名');
+模板默认只接受同源父页面消息；跨域嵌入时将配置 parentOrigin 设置为父页面精确 origin。不要设置通配符。来自模板的 atlas:change 消息也要核对 event.origin。问答状态在 getState().quiz 中返回 question、firstTry、completed。结果页可展开回看每题解释。
+
+4. 模型和叙事
+镜头数组 shots 每项为 [相机x,y,z,观察目标x,y,z]。拆解层由 parts 控制；点云由 cloudA/B/C 控制。保持 establishing→detail→evidence→return 的解释顺序。
+
+5. 移动端与减少动态
+采用响应式布局，章节按钮与进度条均可键盘操作。prefers-reduced-motion 减少过渡和装饰运动。真实 WebGL 不可用时显示说明。
+
+6. 权限
+本项目编写的模板可作为个人和商业项目开发起点。Three.js r160 使用 MIT 许可证，见 vendor/THREE-LICENSE.txt，分发时保留。不得把第三方案例截图当作这些模板的可商用素材。
+
+7. 范围
+这些是八种交互机制的可运行复现，不是 34 个原站的逐像素/完整功能克隆。AR/VR、人脸试戴、真实物理、音频系统、支付库存和复杂游戏另需实现。
