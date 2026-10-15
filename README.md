@@ -2,6 +2,16 @@
 
 为不同项目长期积累的个人设计工具。入口是 dist/library.html，原 SUPERGEAR 研究页面保留在 dist/index.html。
 
+## 叙事扩展与招聘证据
+
+2026-10-15 新增 4 套原创 HTML/SVG 叙事模板：最后一束光、从一粒种子开始、一座城两种视角、未完成的展览。默认进入新叙事实验。全库 130 个内置条目，60 套可运行模板。
+
+入口 dist/library.html?view=storyplus；整包 dist/story-plus-kit.zip；调用文档 dist/stories/READ-ME.txt。生成器 scripts/build-story-expansion.cjs，无外部依赖。模板提供可修改源文件、分支后果、阅读位置恢复、键盘操作及减少动态选项。虚构示例需替换为个人真实内容后再用于作品集。
+
+新增 dist/career.html 下一步工作台：7 个公开岗位正文核对样本（4 国内、3 海外、6 家雇主），核心要求与加分项分开，包含原始链接、短摘、核对日期及失效来源排除记录。证据数据 dist/career-evidence.json。样本是 2026-10-15 核对快照，不代表市场比例或仍在招聘。练习路线为项目分析建议，并非招聘原文。
+
+案例草稿与进度仅保存在访问者本地浏览器，可导入、导出 JSON 或打印为 PDF；没有上传接口。生成器 scripts/build-career-lab.cjs 生成页面与数据，交互源代码 dist/career.js。
+
 ## 案例机制复现模板
 
 新增 8 套模板（5 套 WebGL、3 套 HTML/SVG），在个人库默认打开“案例复现模板”。全库共 56 套可运行模板。30 个参考案例详情已连接到对应机制模板。

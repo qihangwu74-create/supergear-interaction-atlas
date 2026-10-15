@@ -1,0 +1,11 @@
+ATLAS 叙事实验包 / 2026-10-15
+4 个独立 HTML，不依赖外部库。双击打开或放到静态服务器。
+
+beacon: 线索 → 决策 → 分支后果；seed: 滚动 → 条件变化 → 结果；parallel: 双侧视角 → 信息断层 → 决策；archive: 横向阅读 → 详情 → 原位返回。
+
+编辑 ATLAS_STORY_CONFIG 修改标题/章节元数据；页面文案、SVG 和逻辑在同文件中。修改结构时请同步 render() 文案数组和章节按钮。
+同页调用 window.AtlasTemplate.getState() / setState({chapter:2}) / reset()。beacon 保留证据收集门槛；不会跳过未读线索。seed 可 setState({rain:20})；parallel 可 setState({perspective:'both',route:'ferry'})。
+监听 window.addEventListener('atlas:change', e => console.log(e.detail))。
+跨 iframe 调用：先在配置 parentOrigin 中填写精确父页面来源，例如 https://example.com；父页面对 iframe.contentWindow.postMessage({type:'atlas:set',payload:{chapter:2}}, 'https://example.com')。嵌入和目标来源按实际域名填写；不使用 *。
+
+示例均为原创虚构素材，不是个人真实项目证据。交付时替换自己的内容、补充测试记录、注明个人与 AI 的贡献。
