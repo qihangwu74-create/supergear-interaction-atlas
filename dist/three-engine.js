@@ -1,3 +1,13 @@
+// Shared model for pointer, button and keyboard-accessible controls. No rendering dependency.
+window.createAtlasPlaneLayout=function(objects){
+ const base=objects.map(o=>({x:o.position.x,z:o.position.z}));let index=0;
+ const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
+ return {get selected(){return objects[index];},get index(){return index;},
+ select(i){if(Number.isInteger(i)&&i>=0&&i<objects.length)index=i;return objects[index];},
+ move(x,z){if(!Number.isFinite(x)||!Number.isFinite(z))return false;objects[index].position.x=clamp(x,-2.6,2.6);objects[index].position.z=clamp(z,-2,2);return true;},
+ reset(){objects.forEach((o,i)=>{o.position.x=base[i].x;o.position.z=base[i].z;});index=0;}
+ };
+};
 /* Interaction Atlas original demos. Three.js is distributed under MIT; see vendor/THREE-LICENSE.txt. */
 window.startAtlas3D=function(config){
  'use strict';
@@ -40,6 +50,19 @@ window.startAtlas3D=function(config){
  if(mode==='wave'){const geo=new T.PlaneGeometry(4.4,3,80,55);geo.rotateX(-Math.PI/2);special.wave=mesh(geo,new T.MeshStandardMaterial({color:'#82b9bd',metalness:.75,roughness:.25,side:T.DoubleSide}));special.original=Float32Array.from(geo.attributes.position.array);}
  if(mode==='clipping'){special.plane=new T.Plane(new T.Vector3(-1,0,0),.3);mats.forEach(m=>{m.clippingPlanes=[special.plane];m.clipShadows=true;m.side=T.DoubleSide;});special.inner=mesh(new T.SphereGeometry(.65,32,24),coral,[0,0,0]);say('移动剖切面观察内核；剖面不做实体封口。');}
  if(mode==='measure'){special.bounds=new T.Box3Helper(new T.Box3(new T.Vector3(-1.1,-1.08,-1.1),new T.Vector3(1.1,1.02,1.1)),'#e9977d');root.add(special.bounds);}
+ let layout=null,dragSelect=null,depth=null;
+ function syncLayout(){if(!layout)return;const o=layout.selected;slider.value=(o.position.x+2.6)/5.2*100;depth.value=o.position.z;dragSelect.value=layout.index;$('#value').textContent='X '+o.position.x.toFixed(2);$('#depth-value').textContent='Z '+o.position.z.toFixed(2);dirty=true;}
+ if(mode==='drag'){
+  const objects=root.children.filter(o=>o.isMesh);layout=window.createAtlasPlaneLayout(objects);
+  const panel=document.createElement('fieldset');panel.className='layout-controls';panel.innerHTML='<legend>平面布局 · 也可点击按钮移动</legend><label>选择物体 <select id="drag-object"></select></label><label for="drag-depth">纵深位置 <output id="depth-value"></output></label><input id="drag-depth" type="range" min="-2" max="2" step="0.05" value="0"><div class="row"><button type="button" data-move="-0.2,0">左移</button><button type="button" data-move="0.2,0">右移</button><button type="button" data-move="0,-0.2">向前</button><button type="button" data-move="0,0.2">向后</button></div>';
+  $('.controls').insertBefore(panel,$('#status'));dragSelect=$('#drag-object');depth=$('#drag-depth');
+  objects.forEach((o,i)=>{const option=document.createElement('option');option.value=i;option.textContent=o.name;dragSelect.append(option);});
+  const announce=()=>say(layout.selected.name+'：X '+layout.selected.position.x.toFixed(2)+'，Z '+layout.selected.position.z.toFixed(2)+'；示意坐标');
+  dragSelect.onchange=()=>{selectPart(layout.select(Number(dragSelect.value)));syncLayout();announce();};
+  depth.oninput=()=>{playing=false;layout.move(layout.selected.position.x,Number(depth.value));syncLayout();announce();};
+  panel.querySelectorAll('[data-move]').forEach(b=>b.onclick=()=>{playing=false;const [x,z]=b.dataset.move.split(',').map(Number);layout.move(layout.selected.position.x+x,layout.selected.position.z+z);syncLayout();announce();});
+  $('#play').hidden=true;$('#reset').textContent='重置位置与视角';
+ }
  function cam(){activeCamera.position.set(target.x+Math.sin(az)*Math.cos(el)*distance,target.y+Math.sin(el)*distance,target.z+Math.cos(az)*Math.cos(el)*distance);activeCamera.lookAt(target);}
  function update(v){if(config.film){applyFilm(v);return;}parameter=v;const value=Math.round(v*100);$('#value').textContent=value+'%';
  switch(mode){
@@ -59,20 +82,20 @@ window.startAtlas3D=function(config){
  case 'lighting':key.position.set(Math.sin(v*Math.PI*2)*6,4,Math.cos(v*Math.PI*2)*6);break;
  case 'turntable':root.rotation.y=v*Math.PI*2;break;
  case 'measure':root.scale.setScalar(.6+v*.8);$('#metric').textContent='示例宽度 '+(2.2*(.6+v*.8)).toFixed(2)+' u · 非真实尺寸';break;
- case 'drag':if(selected)selected.position.x=(v-.5)*4;break;
+ case 'drag':if(layout){layout.move(-2.6+v*5.2,layout.selected.position.z);syncLayout();}break;
  case 'wave':{const a=special.wave.geometry.attributes.position,o=special.original;for(let i=0;i<a.count;i++)a.setY(i,Math.sin(o[i*3]*2+v*Math.PI*4)*Math.cos(o[i*3+2]*2+v*Math.PI*2)*.4);a.needsUpdate=true;special.wave.geometry.computeVertexNormals();break;}
  }dirty=true;
  }
  function selectPart(p){if(selected?.material?.emissive)selected.material.emissive.set('#000000');selected=p;if(!p.userData.unique){p.material=p.material.clone();p.userData.unique=true;}p.material.emissive.set('#52651b');say('已选中：'+p.name);dirty=true;}
  function pick(ev){const rect=canvas.getBoundingClientRect(),pos=new T.Vector2((ev.clientX-rect.left)/rect.width*2-1,-(ev.clientY-rect.top)/rect.height*2+1),ray=new T.Raycaster();ray.setFromCamera(pos,activeCamera);return ray.intersectObjects(root.children,true).find(i=>i.object.isMesh)?.object;}
  let start=null,dragged=null;
- canvas.addEventListener('pointerdown',e=>{start={x:e.clientX,y:e.clientY,az,el,moved:false};if(mode==='drag'){dragged=pick(e);if(dragged){selectPart(dragged);say('拖动 '+dragged.name+'；也可用滑块水平移动');}}canvas.setPointerCapture(e.pointerId);});
- canvas.addEventListener('pointermove',e=>{if(!start)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;start.moved ||= Math.abs(dx)+Math.abs(dy)>4;if(mode==='drag'&&dragged){const rect=canvas.getBoundingClientRect(),v=new T.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),ray=new T.Raycaster();ray.setFromCamera(v,activeCamera);const point=new T.Vector3();if(ray.ray.intersectPlane(new T.Plane(new T.Vector3(0,1,0),0),point)){dragged.position.x=T.MathUtils.clamp(point.x,-2.6,2.6);dragged.position.z=T.MathUtils.clamp(point.z,-2,2);}}else{az=start.az-dx*.008;el=T.MathUtils.clamp(start.el+dy*.006,-.5,1.25);}dirty=true;});
+ canvas.addEventListener('pointerdown',e=>{start={x:e.clientX,y:e.clientY,az,el,moved:false};if(mode==='drag'){dragged=pick(e);if(dragged){layout.select(root.children.filter(o=>o.isMesh).indexOf(dragged));selectPart(dragged);syncLayout();say('拖动 '+dragged.name+'；也可选择物体并点击方向按钮');}}canvas.setPointerCapture(e.pointerId);});
+ canvas.addEventListener('pointermove',e=>{if(!start)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;start.moved ||= Math.abs(dx)+Math.abs(dy)>4;if(mode==='drag'&&dragged){const rect=canvas.getBoundingClientRect(),v=new T.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),ray=new T.Raycaster();ray.setFromCamera(v,activeCamera);const point=new T.Vector3();if(ray.ray.intersectPlane(new T.Plane(new T.Vector3(0,1,0),0),point)){layout.move(point.x,point.z);syncLayout();}}else{az=start.az-dx*.008;el=T.MathUtils.clamp(start.el+dy*.006,-.5,1.25);}dirty=true;});
  canvas.addEventListener('pointerup',e=>{if(start&&!start.moved&&mode==='hotspots'){const p=pick(e);if(p)selectPart(p);}start=null;dragged=null;});canvas.addEventListener('pointercancel',()=>{start=null;dragged=null;});
  canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-'].includes(e.key))return;e.preventDefault();if(e.key==='ArrowLeft')az-=.15;if(e.key==='ArrowRight')az+=.15;if(e.key==='ArrowUp')el=Math.min(1.25,el+.1);if(e.key==='ArrowDown')el=Math.max(-.5,el-.1);if(e.key==='+')distance=Math.max(3,distance-.4);if(e.key==='-')distance=Math.min(15,distance+.4);dirty=true;});
  slider.oninput=e=>{playing=false;$('#play').setAttribute('aria-pressed','false');$('#play').textContent='播放变化';update(Number(e.target.value)/100);if(mode!=='hotspots')say(config.label+'：'+e.target.value+'%');};
  $('#play').onclick=()=>{playing=!playing;$('#play').setAttribute('aria-pressed',String(playing));$('#play').textContent=playing?'暂停变化':'播放变化';say(playing?'正在播放，可随时暂停':'已暂停');};
- $('#reset').onclick=()=>{az=.65;el=.28;distance=8;target.set(0,.1,0);root.rotation.set(0,0,0);playing=false;$('#play').setAttribute('aria-pressed','false');$('#play').textContent='播放变化';slider.value=config.initial||'35';update(Number(slider.value)/100);say('已恢复初始视图与主参数');};
+ $('#reset').onclick=()=>{az=.65;el=.28;distance=8;target.set(0,.1,0);root.rotation.set(0,0,0);playing=false;$('#play').setAttribute('aria-pressed','false');$('#play').textContent='播放变化';slider.value=config.initial??'35';if(layout){layout.reset();selectPart(layout.selected);syncLayout();say('三个物体的位置与视角已恢复');}else{update(Number(slider.value)/100);say('已恢复初始视图与主参数');}};
  document.querySelectorAll('[data-camera]').forEach(b=>b.onclick=()=>{const preset=b.dataset.camera;az=preset==='front'?0:preset==='side'?Math.PI/2:.65;el=preset==='top'?1.25:.15;dirty=true;say('视角：'+b.textContent);});
  document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{lime.color.set(b.dataset.color);if(special.points)special.points.material.color.set(b.dataset.color);if(special.wave)special.wave.material.color.set(b.dataset.color);document.querySelectorAll('[data-color]').forEach(x=>x.setAttribute('aria-pressed',String(b===x)));dirty=true;say('主体颜色：'+b.textContent);});
  $('#option').onclick=()=>{const b=$('#option'),on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));if(mode==='configurator')special.arms.visible=!on;else if(mode==='projection')activeCamera=on?orth:camera;else if(mode==='material'){mats.forEach(m=>m.metalness=on?.95:.1);}else if(mode==='lighting'){key.color.set(on?'#a4caff':'#ffe7bf');}else if(special.points){special.points.material.size=on?.07:.035;}else{root.traverse(o=>{if(o.isMesh)o.material.wireframe=on;});}dirty=true;say(on?'已启用：'+b.textContent:'已关闭：'+b.textContent);};
@@ -109,5 +132,5 @@ window.startAtlas3D=function(config){
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();playing=false;$('#fallback').hidden=false;$('#runtime').textContent='CONTEXT LOST';say('图形上下文已中断，请重置预览。');});
  function frame(t){if(disposed)return;requestAnimationFrame(frame);const dt=last?Math.min((t-last)/1000,.05):0;last=t;if(!visible)return;if(transition){transition.t=Math.min(1,transition.t+dt/1.25);const u=transition.t*transition.t*(3-2*transition.t);applyFilm(T.MathUtils.lerp(transition.from,transition.to,u));if(transition.t===1)transition=null;}if(playing){if(config.film){const v=Math.min(1,parameter+dt/(config.film.shots.length*6));applyFilm(reduced.matches?Math.floor(v*(config.film.shots.length-1))/(config.film.shots.length-1):v);if(reduced.matches){playing=false;say('已启用减少动态，请用章节按钮逐镜查看。');$('#play').textContent='播放叙事';$('#play').setAttribute('aria-pressed','false');}if(v>=1)pauseFilm();}else{clock+=dt;const v=(parameter+dt*.12)%1;slider.value=Math.round(v*100);update(v);}}if(dirty){cam();renderer.render(scene,activeCamera);canvas.dataset.ready='true';dirty=false;}}
  window.addEventListener('pagehide',()=>{disposed=true;ro.disconnect();scene.traverse(o=>{o.geometry?.dispose();if(o.material){for(const m of(Array.isArray(o.material)?o.material:[o.material]))m.dispose();}});environment.dispose();renderer.dispose();});
- size();update(parameter);$('#runtime').textContent='WEBGL · THREE r160';say(config.hint);requestAnimationFrame(frame);
+ size();if(layout){selectPart(layout.selected);syncLayout();}else update(parameter);$('#runtime').textContent='WEBGL · THREE r160';say(config.hint);requestAnimationFrame(frame);
 };

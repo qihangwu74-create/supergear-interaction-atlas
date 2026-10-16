@@ -127,3 +127,13 @@ SUPERGEAR 品牌和产品素材由项目方提供。参考品牌、案例及截�
 仓库根目录的 index.html 现在会转到 dist/library.html，原研究页面仍可通过导航进入。在 Settings → Pages 中选择 Deploy from a branch，分支 main，目录 / (root)，然后 Save。启用后访问 https://qihangwu74-create.github.io/supergear-interaction-atlas/ 。
 
 所有页面配图均位于 dist/assets，使用相对路径，不依赖第三方图片外链。
+
+## 2026-10-16 适用性审计
+
+入口 [dist/validation.html](dist/validation.html)，机器可读报告 [dist/validation-report.json](dist/validation-report.json)，测试记录 [dist/validation-tests.json](dist/validation-tests.json)。60 套模板逐项映射至 9 类任务方向与 1 类表达研究；26 套机制、27 套流程、7 套研究均是源码层分类，不等同于生产验收或市场覆盖率。10 个原始来源分别标明产品、研究、标准、招聘性质与核对日期。
+
+修复三维拖放的完整非拖动替代及全部位置复位、滚动章节的固定高度假设、配色模板及折叠面板的不准确文案。下载包与单页同步更新。浏览器工具本轮无法启动，因此画面、焦点、真机与性能验收尚未完成；未做真实用户效果测试。
+
+审计生成：`node scripts/build-validation.cjs`；逻辑回归：`node scripts/test-validation.cjs`。可设置 ATLAS_ROOT 指向仓库目录。修改模板后应重跑并更新相关 ZIP。浏览器验证完成前不能将待复测状态改为通过。
+
+同轮另对 34 个参考案例与 36 个资源入口做了公开 HTTP 检查：67 个返回成功状态，3 个返回 403（Framework、Dyson、LottieFiles）。这只证明链接响应，不证明交互功能或业务效果。逐项记录见 `dist/reference-link-check.json`；复查脚本 `scripts/check-reference-links.cjs`。

@@ -1,0 +1,5 @@
+2026-10-16
+60 templates reviewed at source level. See validation.html for intended tasks, gaps, and evidence.
+Fixes: complete planar drag controls and reset; measured scroll chapter offsets; accurate color/accordion claims.
+No production/user-effectiveness certification. Browser and device retesting pending because browser tooling could not start.
+Shared Three.js engine and original MIT license must remain with three/ pages.

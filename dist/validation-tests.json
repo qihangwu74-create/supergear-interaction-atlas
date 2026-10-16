@@ -1,0 +1,185 @@
+{
+  "date": "2026-10-16",
+  "environment": "Node v24.19.0 / Windows；隔离状态与轻量 DOM 桩",
+  "limit": "不是浏览器实测；不验证渲染、真实焦点、触屏、读屏或性能。",
+  "total": 44,
+  "passed": 44,
+  "results": [
+    {
+      "name": "配色：重复改选后画面、文案与 aria-pressed 一致",
+      "status": "pass"
+    },
+    {
+      "name": "价格：年付总额与月均并列，切回月付恢复",
+      "status": "pass"
+    },
+    {
+      "name": "对比：两端值可覆盖完整前后画面",
+      "status": "pass"
+    },
+    {
+      "name": "撤销：恢复条目和操作焦点",
+      "status": "pass"
+    },
+    {
+      "name": "加载：中断后停止计时，再次启动可完成",
+      "status": "pass"
+    },
+    {
+      "name": "标签页：End/Home 同步面板、焦点与 tabIndex",
+      "status": "pass"
+    },
+    {
+      "name": "分支：未选择不产生有效推荐，改选会更新结果",
+      "status": "pass"
+    },
+    {
+      "name": "归档：回看后结果不伪装已恢复，撤销才恢复",
+      "status": "pass"
+    },
+    {
+      "name": "滚动：长短章节使用实际位置，跳章与滚动同步",
+      "status": "pass"
+    },
+    {
+      "name": "三维布局：三个对象都能选择并沿两轴移动",
+      "status": "pass"
+    },
+    {
+      "name": "三维布局：越界夹紧与非法数值保护",
+      "status": "pass"
+    },
+    {
+      "name": "三维布局：复位全部位置与选中对象",
+      "status": "pass"
+    },
+    {
+      "name": "三维布局：按钮增量与指针绝对移动遵守同一边界",
+      "status": "pass"
+    },
+    {
+      "name": "新增详情审计位于 detail 的有效作用域",
+      "status": "pass"
+    },
+    {
+      "name": "s-orbit：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-material：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-explode：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-clipping：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-hotspots：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-configurator：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-morph：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-particles：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-instancing：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-path：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-room：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-scroll：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-projection：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-lighting：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-turntable：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-measure：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-drag：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-wave：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-film-anatomy：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-film-surface：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-film-gallery：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-film-fit：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-film-route：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "s-film-lens：真实几何与控制器初始化（GPU/DOM 桩）",
+      "status": "pass"
+    },
+    {
+      "name": "拖放完整控件：改选、两轴按钮、深度滑块和复位同步",
+      "status": "pass"
+    },
+    {
+      "name": "审计筛选：全部、任务、空结果、清空与研究分类计数一致",
+      "status": "pass"
+    },
+    {
+      "name": "打印审计：展开详情后恢复原展开状态",
+      "status": "pass"
+    },
+    {
+      "name": "validation.js 语法",
+      "status": "pass"
+    },
+    {
+      "name": "library.js 语法",
+      "status": "pass"
+    },
+    {
+      "name": "validation-data.js 语法",
+      "status": "pass"
+    }
+  ]
+}
