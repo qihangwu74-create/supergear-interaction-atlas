@@ -1,0 +1,16 @@
+ATLAS MOTION LAB — 2026-10-22
+5 套原创模板 / 10 个原始资料入口
+
+运行：解压整包后双击 motion/material.html 等页面。Three.js 本地依赖保留在 vendor 文件夹；也可从素材库下载内嵌依赖的独立 HTML。
+配置：编辑单页中的 ATLAS_MOTION_CONFIG（标题、章节、说明、人物）。
+API：window.AtlasTemplate.getState(); setState({started:true,progress:0.67}); reset();
+progress 范围 0–1；material 范围 0–2；灯位 x/y 范围 -1–1；reduced/follow 为布尔值。
+监听：window.addEventListener('atlas:change', e => console.log(e.detail));
+输入：滚动、章节按钮与 range 共用同一进度；只有 passage、anatomy、gaze 需要点击进入。
+反向滚动可逆；退出回到开场。减少动态使用静态关键帧，关闭非必要指针运动；页面仍可自然滚动。
+替换产品：buildScene() 中替换程序化几何与材质；本示例未集成 GLTF 加载器。
+替换人物：将人物按钮内 SVG 替换为自己有授权的 img，保留名字和档案按钮。
+
+边界：无真实尺寸、库存、支付、摄像头或眼动检测。第三类按产品运镜实现，不包含人物骨骼动画。
+参考：sources.json 保留来源、核对范围与提示词。原创模板采用本目录 LICENSE.txt；Three.js 保留 MIT 声明。外站代码和照片未打包。
+验证：checks.json 记录执行过的检查与未验证范围。

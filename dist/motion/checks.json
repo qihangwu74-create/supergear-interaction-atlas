@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-22",
+  "automated": {
+    "passed": 21,
+    "total": 21,
+    "checks": [
+      {
+        "name": "material: scripts parse and HTML dependencies resolve",
+        "status": "pass"
+      },
+      {
+        "name": "material: gate, clamp, reverse and reset",
+        "status": "pass"
+      },
+      {
+        "name": "material: reduced mode, chapter UI and scroll share state",
+        "status": "pass"
+      },
+      {
+        "name": "material: real Three geometry renders via stub and GPU fallback retains text",
+        "status": "pass"
+      },
+      {
+        "name": "passage: scripts parse and HTML dependencies resolve",
+        "status": "pass"
+      },
+      {
+        "name": "passage: gate, clamp, reverse and reset",
+        "status": "pass"
+      },
+      {
+        "name": "passage: reduced mode, chapter UI and scroll share state",
+        "status": "pass"
+      },
+      {
+        "name": "passage: real Three geometry renders via stub and GPU fallback retains text",
+        "status": "pass"
+      },
+      {
+        "name": "anatomy: scripts parse and HTML dependencies resolve",
+        "status": "pass"
+      },
+      {
+        "name": "anatomy: gate, clamp, reverse and reset",
+        "status": "pass"
+      },
+      {
+        "name": "anatomy: reduced mode, chapter UI and scroll share state",
+        "status": "pass"
+      },
+      {
+        "name": "anatomy: real Three geometry renders via stub and GPU fallback retains text",
+        "status": "pass"
+      },
+      {
+        "name": "gaze: scripts parse and HTML dependencies resolve",
+        "status": "pass"
+      },
+      {
+        "name": "gaze: gate, clamp, reverse and reset",
+        "status": "pass"
+      },
+      {
+        "name": "gaze: reduced mode, chapter UI and scroll share state",
+        "status": "pass"
+      },
+      {
+        "name": "portraits: scripts parse and HTML dependencies resolve",
+        "status": "pass"
+      },
+      {
+        "name": "portraits: gate, clamp, reverse and reset",
+        "status": "pass"
+      },
+      {
+        "name": "portraits: reduced mode, chapter UI and scroll share state",
+        "status": "pass"
+      },
+      {
+        "name": "gaze: both pupils point left and right with chapters",
+        "status": "pass"
+      },
+      {
+        "name": "material: control pointer motion does not shift light",
+        "status": "pass"
+      },
+      {
+        "name": "library: 65 templates with unique IDs and resolvable motion files",
+        "status": "pass"
+      }
+    ]
+  },
+  "scope": "Node isolated state/DOM tests; actual Three.js geometry with renderer stub. Browser observations recorded separately, not simulated as these tests.",
+  "browser": {
+    "date": "2026-10-22",
+    "environment": "Codex in-app Chromium; default desktop viewport and 390×844 CSS viewport",
+    "observed": [
+      "五套模板打开，三套 WebGL 场景渲染；材质选择与章节文字同步",
+      "品牌入场解锁控制、退出恢复开场",
+      "产品拆解与终章合拢；调整侧向机位后检查截图",
+      "视线随左侧细节按钮转向，并同步对应标记",
+      "画廊在 390×844 视口的六张卡片与控制条可见，无水平溢出",
+      "画廊关闭档案后 scrollY 保持 1743，焦点回到同一人物按钮",
+      "减少动态复选框生效；进度条键盘 Home 回到 0%",
+      "素材库新分类显示 5 项、总计 135 项；详情内嵌模板与原始来源链接可见"
+    ],
+    "limits": [
+      "未进行真实移动设备性能测试",
+      "独立 HTML 实际下载验证时浏览器工具超时；仅验证离线源码组装与 ZIP 内容",
+      "外站按原始正文收录，未逐一完成其动态体验"
+    ]
+  },
+  "notVerified": [
+    "真实设备性能与帧率",
+    "屏幕阅读器",
+    "真实用户理解与商业转化",
+    "所有外站动效的端到端操作"
+  ]
+}

@@ -137,3 +137,14 @@ SUPERGEAR 品牌和产品素材由项目方提供。参考品牌、案例及截�
 审计生成：`node scripts/build-validation.cjs`；逻辑回归：`node scripts/test-validation.cjs`。可设置 ATLAS_ROOT 指向仓库目录。修改模板后应重跑并更新相关 ZIP。浏览器验证完成前不能将待复测状态改为通过。
 
 同轮另对 34 个参考案例与 36 个资源入口做了公开 HTTP 检查：67 个返回成功状态，3 个返回 403（Framework、Dyson、LottieFiles）。这只证明链接响应，不证明交互功能或业务效果。逐项记录见 `dist/reference-link-check.json`；复查脚本 `scripts/check-reference-links.cjs`。
+
+
+## 2026-10-22 新动效专题
+
+入口 [dist/motion-lab.html](dist/motion-lab.html)。新增 5 套原创模板（3 套 WebGL、2 套 HTML/SVG），共 65 套可运行模板。材质巡光、点击入场的纵深穿行、运镜拆解、角色视线引导、人物画廊重排分别附触发说明、视觉变化、任务目的与可复制提示词。
+
+10 个来源均有原始链接、类型和 2026-10-22 核对范围。参考页面正文已核对，未冒充所有原站动效已实测。人物插画和示意几何为原创；未打包外站照片。新模板的 MIT 许可仅限 motion 新增原创内容，Three.js 许可保留。
+
+下载 [motion-kit.zip](dist/motion-kit.zip)；调用说明 [INTEGRATION.txt](dist/motion/INTEGRATION.txt)；验证记录 [checks.json](dist/motion/checks.json)。旧审计是 2026-10-16 的 60 套快照，本批另行记录。
+
+重建：`node scripts/build-motion-lab.cjs`，再运行 `node scripts/integrate-motion.cjs`。若重新运行旧素材库生成器，最后重新执行 integrate-motion 保留新增入口。

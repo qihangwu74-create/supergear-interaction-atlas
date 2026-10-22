@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-22",
+  "sources": [
+    {
+      "id": 0,
+      "title": "Three.js · Physical Material",
+      "url": "https://threejs.org/docs/pages/MeshPhysicalMaterial.html",
+      "kind": "官方技术资料",
+      "note": "清漆、粗糙度等材质机制，支撑表面反应设计。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。"
+    },
+    {
+      "id": 1,
+      "title": "Three.js · PointLight",
+      "url": "https://threejs.org/docs/pages/PointLight.html",
+      "kind": "官方技术资料",
+      "note": "点光源位置与强度；用于光标巡光实现。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。"
+    },
+    {
+      "id": 2,
+      "title": "Google · Staging & Camera Control",
+      "url": "https://modelviewer.dev/examples/stagingandcameras/",
+      "kind": "官方交互示例",
+      "note": "滚动关联 camera-orbit、镜头目标和回中示例。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。"
+    },
+    {
+      "id": 3,
+      "title": "GSAP · ScrollTrigger",
+      "url": "https://gsap.com/docs/v3/Plugins/ScrollTrigger/",
+      "kind": "官方技术资料",
+      "note": "滚动进度、固定区段与时间轴同步的实现参考。本套模板用原生滚动实现。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。"
+    },
+    {
+      "id": 4,
+      "title": "Codrops · Sticky Sections",
+      "url": "https://tympanus.net/codrops/2024/01/31/on-scroll-animation-ideas-for-sticky-sections/",
+      "kind": "设计实验 + 演示",
+      "note": "固定章节离开视口时的转场设计。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。",
+      "demo": "https://tympanus.net/Development/StickySections/"
+    },
+    {
+      "id": 5,
+      "title": "Codrops · Layout Formations",
+      "url": "https://tympanus.net/codrops/2024/09/18/exploration-of-on-scroll-layout-formations/",
+      "kind": "设计实验 + 演示",
+      "note": "从分散画面组成最终布局，强调重排完成后的阅读。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。",
+      "demo": "https://tympanus.net/Development/OnScrollLayoutFormations/"
+    },
+    {
+      "id": 6,
+      "title": "Codrops · Staggered 3D Grid",
+      "url": "https://tympanus.net/codrops/2024/10/16/staggered-3d-grid-animations-with-scroll-triggered-effects/",
+      "kind": "设计实验 + 演示",
+      "note": "网格交错、透视和排版之间的滚动关联。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。",
+      "demo": "https://tympanus.net/Development/Staggered3DGridAnimations/"
+    },
+    {
+      "id": 7,
+      "title": "Codrops · TileScroll",
+      "url": "https://github.com/codrops/TileScroll",
+      "kind": "官方源码入口",
+      "note": "图像网格滚动参考；代码与照片授权须分别核对。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。"
+    },
+    {
+      "id": 8,
+      "title": "MDN · pointermove",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event",
+      "kind": "官方平台资料",
+      "note": "指针位置事件；视线引导为本项目的原创机制组合，不冒充原站案例。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。"
+    },
+    {
+      "id": 9,
+      "title": "illoca · 产品叙事网站",
+      "url": "https://illoca.unseen.co/",
+      "kind": "真实产品页面",
+      "note": "从意图到草图、体量与方案迭代的分节说明；文本结构已核对，动态效果未逐项实测。",
+      "checked": "2026-10-22",
+      "scope": "读取原始页面正文；未将文章说明视为浏览器动效实测。"
+    }
+  ],
+  "templates": [
+    {
+      "slug": "material",
+      "trigger": "光标移动调整灯位；滚动改变巡光角度；点击切换表面。",
+      "change": "真实点光源在三维曲面上移动，高光随粗糙度变化，镜头保持稳定。",
+      "accept": "三种表面在同一灯位比较；复位后灯位、表面和进度均恢复。",
+      "prompt": "制作一个可独立运行的交互页面。目标：区分哑光、缎面和抛光的视觉反应。\n触发：光标移动调整灯位；滚动改变巡光角度；点击切换表面。\n画面变化：真实点光源在三维曲面上移动，高光随粗糙度变化，镜头保持稳定。\n叙事顺序：先看轮廓 → 让光掠过 → 比较表面 → 回到选择。\n内容配置放在 ATLAS_MOTION_CONFIG；通过 AtlasTemplate.getState / setState / reset 调用。\n滚动可逆、没有强制滚轮劫持；提供章节按钮和键盘可操作的进度条；尊重 prefers-reduced-motion，用静态关键帧代替连续运镜。\n验收：三种表面在同一灯位比较；复位后灯位、表面和进度均恢复。\n边界：程序化几何与示意灯光，不是实物色差或材质检测。"
+    },
+    {
+      "slug": "passage",
+      "trigger": "点击进入后，自然滚动推进；章节按钮与进度条也可控制。",
+      "change": "引导物穿过空间门，镜头沿纵深推进；终点回收为品牌主张。",
+      "accept": "点击后滚动到结尾；回滚回到同一场景；退出后停止推进并回到开场。",
+      "prompt": "制作一个可独立运行的交互页面。目标：把品牌起点、探索过程与价值结果串成可回看的旅程。\n触发：点击进入后，自然滚动推进；章节按钮与进度条也可控制。\n画面变化：引导物穿过空间门，镜头沿纵深推进；终点回收为品牌主张。\n叙事顺序：发出邀请 → 穿过未知 → 找到方向 → 带走主张。\n内容配置放在 ATLAS_MOTION_CONFIG；通过 AtlasTemplate.getState / setState / reset 调用。\n滚动可逆、没有强制滚轮劫持；提供章节按钮和键盘可操作的进度条；尊重 prefers-reduced-motion，用静态关键帧代替连续运镜。\n验收：点击后滚动到结尾；回滚回到同一场景；退出后停止推进并回到开场。\n边界：原创虚构品牌场景；真实三维位移，没有视频或外部模型。"
+    },
+    {
+      "slug": "anatomy",
+      "trigger": "点击开始，然后滚动或使用章节导航。",
+      "change": "全景定向 → 绕行靠近 → 分层拆解 → 合拢；转场点短暂暗场。",
+      "accept": "拆解后回滚，零件连续复位；终章合拢；减少动态模式下仍能阅读部件关系。",
+      "prompt": "制作一个可独立运行的交互页面。目标：按部件关系解释结构，拆开之后仍知道如何组成整体。\n触发：点击开始，然后滚动或使用章节导航。\n画面变化：全景定向 → 绕行靠近 → 分层拆解 → 合拢；转场点短暂暗场。\n叙事顺序：认识整体 → 靠近接口 → 看懂层次 → 重新组合。\n内容配置放在 ATLAS_MOTION_CONFIG；通过 AtlasTemplate.getState / setState / reset 调用。\n滚动可逆、没有强制滚轮劫持；提供章节按钮和键盘可操作的进度条；尊重 prefers-reduced-motion，用静态关键帧代替连续运镜。\n验收：拆解后回滚，零件连续复位；终章合拢；减少动态模式下仍能阅读部件关系。\n边界：原创镜头装置示意；无真实工程尺寸、维修或装配验证。"
+    },
+    {
+      "slug": "gaze",
+      "trigger": "点击开始；点击细节按钮或滚动，眼睛看向当前讲解位置。",
+      "change": "瞳孔有限幅地朝目标移动，标记与说明同步；可单独开启指针跟随。",
+      "accept": "点击细节后，视线、标记、文字同步；关闭自由跟随后指针移动不改变目标。",
+      "prompt": "制作一个可独立运行的交互页面。目标：用角色的注意力引导用户看向正在解释的部位。\n触发：点击开始；点击细节按钮或滚动，眼睛看向当前讲解位置。\n画面变化：瞳孔有限幅地朝目标移动，标记与说明同步；可单独开启指针跟随。\n叙事顺序：建立视线 → 看向旋钮 → 看向接口 → 完成理解。\n内容配置放在 ATLAS_MOTION_CONFIG；通过 AtlasTemplate.getState / setState / reset 调用。\n滚动可逆、没有强制滚轮劫持；提供章节按钮和键盘可操作的进度条；尊重 prefers-reduced-motion，用静态关键帧代替连续运镜。\n验收：点击细节后，视线、标记、文字同步；关闭自由跟随后指针移动不改变目标。\n边界：原创 SVG 角色；不读取摄像头、不检测真实眼动。"
+    },
+    {
+      "slug": "portraits",
+      "trigger": "自然滚动将散落画面重排为网格；点击人物打开档案。",
+      "change": "六张人物插画沿不同路径归位；关闭档案保留阅读位置和焦点。",
+      "accept": "关闭人物档案后滚动位置不变、焦点归还；窄屏所有人物可读可点。",
+      "prompt": "制作一个可独立运行的交互页面。目标：团队、创作者或人物专题：先形成印象，再看具体的人。\n触发：自然滚动将散落画面重排为网格；点击人物打开档案。\n画面变化：六张人物插画沿不同路径归位；关闭档案保留阅读位置和焦点。\n叙事顺序：各自的世界 → 走到一起 → 看见每个人 → 留下联系。\n内容配置放在 ATLAS_MOTION_CONFIG；通过 AtlasTemplate.getState / setState / reset 调用。\n滚动可逆、没有强制滚轮劫持；提供章节按钮和键盘可操作的进度条；尊重 prefers-reduced-motion，用静态关键帧代替连续运镜。\n验收：关闭人物档案后滚动位置不变、焦点归还；窄屏所有人物可读可点。\n边界：原创 SVG 人物插画，不含第三方肖像；上线时可替换为授权照片。"
+    }
+  ]
+}
