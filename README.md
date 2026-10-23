@@ -160,3 +160,17 @@ SUPERGEAR 品牌和产品素材由项目方提供。参考品牌、案例及截�
 - Manim 示例脚本尚未渲染；PS Editor 尚未确认唯一项目。MotionSites 只记录来源，未安装远程 MCP、未获取付费资源。工作流 JSON 是提示词，不是假称正在运行的 Agent。
 - 模型来源及授权范围见 `dist/road-glide/MODEL-NOTICE.txt`。模型与商标不在原创代码许可内。第三方库许可原样保留。
 - 新增批次检查见 `dist/studio/verification.json`；浏览器演示验证不等于用户效果或实机性能验证。
+
+## 2026-10-23 · 工业产品交互实验室
+
+[直接体验](https://qihangwu74-create.github.io/supergear-interaction-atlas/dist/road-glide/industrial.html)：同一辆真实 Road Glide，11 个可调用模式——分层爆炸、分步回装、动态剖切、透明透视、部件联动、车轮机构运动、概念路径、配置探索、空间包络、同步对比、检查叙事。素材库新增 11 张实际运行截图卡片，共 79 个可运行模板入口。
+
+运行时为 138 个可绘制网格（原文件 135 个对象中的多材质图元被拆分），按 7 个视觉系统分组；不作为工程 BOM。六步回装可逆，左右对比共用同一个相机，状态与笔记可导出、导入。支持键盘滑杆、清单替代三维拾取、减少动态、加载失败重试。
+
+调用方法在 `dist/road-glide/INDUSTRIAL.txt`，模式配置在 `industrial-config.js`，API 为 `AtlasIndustrial`，兼容别名 `AtlasTemplate`。完整下载包 `dist/road-glide-kit.zip` 已包含新增功能、模型、依赖与回归页。
+
+本批完成 36 项浏览器回归、375px 内容宽度检查（390px iframe）、11 种模式运行截图、实际 JSON 下载与重新导入、素材库弹窗预览。逐项范围见 `dist/road-glide/industrial-checks.json`。未宣称真实手机性能或用户任务成功率已验证。
+
+拆解是展示编排，剖切只裁剪已有网格，车轮绕估计轴心旋转，流向为概念路径；没有维修顺序、内部机构、CFD、碰撞或实车尺寸认证。包络默认模型单位，输入已知长度后才进行比例估算。
+
+更新步骤：修改工业模板 → 运行 `node scripts/integrate-industrial.cjs` → 浏览器打开 `/qa-industrial.html` 检查 → `scripts/package-studio.ps1` 更新下载包。历史审计保留原批次范围。

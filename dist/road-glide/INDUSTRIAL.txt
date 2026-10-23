@@ -1,0 +1,58 @@
+ATLAS / INDUSTRIAL STUDIES — Road Glide 2024
+
+启动：仓库根目录执行 node scripts/serve-road.cjs
+打开 http://127.0.0.1:4173/road-glide/industrial.html
+必须使用 HTTP 服务；不要直接双击 HTML。
+
+11 个入口（同一运行器，URL hash 选择模式）：
+#explode 分层爆炸 / #assembly 分步回装 / #section 剖切
+#xray 透明覆盖件 / #isolate 清单与部件联动
+#mechanism 车轮旋转 / #flow 概念路径
+#config 配置探索 / #measure 空间包络
+#compare 同镜头对比 / #inspect 检查叙事
+
+复用入口：
+window.AtlasIndustrial.getState()
+window.AtlasIndustrial.setState({mode:'explode', progress:0.8})
+window.AtlasIndustrial.setState({mode:'section', axis:'z', progress:0.5})
+window.AtlasIndustrial.setState({mode:'isolate',group:'power',hideOthers:true})
+window.AtlasIndustrial.reset()
+window.AtlasIndustrial.getParts()
+window.AtlasIndustrial.destroy()
+window.AtlasTemplate 是同一 API 的别名。
+模型 ready 后才可 setState；监听 atlas:change 或检查 getState().ready。
+导出的 JSON 可恢复参数和笔记，镜头使用该模式默认构图，不保存自由旋转后的相机。
+通过同源 iframe 嵌入时，保留相对模型、vendor、Draco 路径。
+不同源父页面不能直接读取 iframe 的 JavaScript；本版没有开放 postMessage 控制桥。
+
+结构与调用：
+industrial-config.js：模式文案、7 组命名匹配规则、展开向量、回装顺序与观察任务。
+industrial.js：Three.js 渲染、交互状态、射线选择、裁切、变体和状态校验。
+industrial.css / industrial.html：响应式界面。
+原始 GLB 含 135 个网格对象；Three.js 按多材质图元加载为 138 个可绘制网格。页面显示运行时数量，不声称 138 个工程零件。
+分组为人工定义的视觉系统，剩余网格归入车架与其他；不等于制造商 BOM。
+模型与纹理许可沿用 MODEL-NOTICE.txt；Three.js / Draco 许可随 vendor 保存。
+
+实现边界：
+1. 展开与回装是结构认知顺序；没有碰撞、螺栓扭矩、工具空间或维修流程校验。
+2. 剖切裁剪模型已有表面，无实体截面封口，也不生成不存在的内部结构。
+3. 透明透视只对已有覆盖件改变不透明度，不能当作 X 光成像。
+4. 机构演示沿估计轮轴旋转轮胎、轮毂、盘；卡钳和前叉保持静止。没有真实传动比、制动、悬挂或动力学模型。
+5. 外部来流与动力关系仅是概念路径，未作 CFD 或真实管线求解。
+6. 配置基于隐藏现有边箱、风挡与演示配色，不虚构可购买的车型版本。
+7. 包络默认模型单位；只有用户提供已知整车长度后才按比例换算毫米。不是官方尺寸、实车间隙或适配结论。
+8. 检查叙事展示观察流程和笔记保存，不给出机械故障诊断。
+
+验证：
+浏览器回归入口 /qa-industrial.html，点击 Run checks。
+源码 scripts/integrate-industrial.cjs 将模式加入素材库。
+修改完后运行集成脚本，再运行 scripts/package-studio.ps1 更新完整下载包。
+新增模式验证单独保存在 industrial-checks.json，不改写旧批次的历史审计。
+
+技术参考：
+https://threejs.org/docs/pages/Material.html
+https://threejs.org/docs/pages/Plane.html
+https://threejs.org/docs/pages/Box3.html
+https://threejs.org/docs/pages/Raycaster.html
+https://explodeview.com/demo/
+参考页面展示的能力不是本模板通过工程认证的依据。

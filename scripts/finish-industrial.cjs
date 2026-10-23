@@ -1,0 +1,2 @@
+const fs=require('fs'),p=require('path'),sharp=require('C:/Users/sg/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp'),root=p.resolve(__dirname,'..');
+(async()=>{const {modes}=await import('../dist/road-glide/industrial-config.js');for(const m of modes){const src=p.join(root,'model-work','industrial-'+m.id+'.png');await sharp(src).extract({left:36,top:314,width:822,height:550}).resize(1000).jpeg({quality:86}).toFile(p.join(root,'dist/road-glide','industrial-'+m.id+'.jpg'));}console.log('Prepared 11 actual browser screenshot covers.');})();

@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-23",
+  "scope": "11 industrial modes on the supplied Road Glide GLB",
+  "browser": "Codex in-app Chromium",
+  "passed": 36,
+  "total": 36,
+  "checks": [
+    {
+      "name": "model ready",
+      "pass": true
+    },
+    {
+      "name": "render meshes loaded",
+      "pass": true,
+      "detail": 138
+    },
+    {
+      "name": "seven groups account for every mesh",
+      "pass": true
+    },
+    {
+      "name": "each group populated",
+      "pass": true
+    },
+    {
+      "name": "explosion moves meshes",
+      "pass": true
+    },
+    {
+      "name": "explosion fully reversible",
+      "pass": true
+    },
+    {
+      "name": "assembly starts separated",
+      "pass": true
+    },
+    {
+      "name": "assembly returns exact positions",
+      "pass": true
+    },
+    {
+      "name": "assembly reverse step",
+      "pass": true
+    },
+    {
+      "name": "cut plane x",
+      "pass": true
+    },
+    {
+      "name": "cut plane y",
+      "pass": true
+    },
+    {
+      "name": "cut plane z",
+      "pass": true
+    },
+    {
+      "name": "cut flip",
+      "pass": true
+    },
+    {
+      "name": "clipping removed on transition",
+      "pass": true
+    },
+    {
+      "name": "shell opacity control",
+      "pass": true
+    },
+    {
+      "name": "isolation hides remainder",
+      "pass": true
+    },
+    {
+      "name": "single mesh list selection",
+      "pass": true
+    },
+    {
+      "name": "wheel motion has named parts and rotation",
+      "pass": true
+    },
+    {
+      "name": "wheel reset",
+      "pass": true
+    },
+    {
+      "name": "rear wheel selection",
+      "pass": true
+    },
+    {
+      "name": "conceptual flow endpoint",
+      "pass": true
+    },
+    {
+      "name": "visibility config",
+      "pass": true
+    },
+    {
+      "name": "config changes do not leak",
+      "pass": true
+    },
+    {
+      "name": "calibrated envelope",
+      "pass": true
+    },
+    {
+      "name": "clear calibration",
+      "pass": true
+    },
+    {
+      "name": "second model exists",
+      "pass": true
+    },
+    {
+      "name": "B config updates",
+      "pass": true
+    },
+    {
+      "name": "compare switch resets original",
+      "pass": true
+    },
+    {
+      "name": "inspection reaches record step",
+      "pass": true
+    },
+    {
+      "name": "state round trip",
+      "pass": true
+    },
+    {
+      "name": "invalid state rejected",
+      "pass": true
+    },
+    {
+      "name": "reduced motion prevents autoplay",
+      "pass": true
+    },
+    {
+      "name": "play and pause flow",
+      "pass": true
+    },
+    {
+      "name": "animated assembly step ends",
+      "pass": true
+    },
+    {
+      "name": "reset after animation",
+      "pass": true
+    },
+    {
+      "name": "reset transform finite",
+      "pass": true
+    }
+  ],
+  "visualChecks": [
+    "11 mode screenshots",
+    "390px iframe: 375px content without horizontal body overflow",
+    "library card opens industrial runtime and correct integration guide",
+    "actual JSON download and file-chooser reimport restored inspect mode"
+  ],
+  "notClaimed": [
+    "Engineering disassembly or service procedure",
+    "CFD or mechanical simulation",
+    "Official dimensions or fitment",
+    "Real mobile hardware performance",
+    "User success rate"
+  ],
+  "sourceObjects": 135,
+  "runtimeMeshes": 138
+}

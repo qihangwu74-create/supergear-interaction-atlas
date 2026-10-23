@@ -11,7 +11,7 @@
   const runnable=e=>e.type==='template'||e.type==='three'||e.type==='remake';
   const portableCache=new Map();
   async function portable(e){
-    if(e.assetBundle){const r=await fetch('road-glide/viewer.js');if(!r.ok)throw Error('源码加载失败');return '// 完整依赖、模型和配置请下载 road-glide-kit.zip。此处仅展示共享 viewer.js。\n'+await r.text();}
+    if(e.assetBundle){const r=await fetch(e.sourceFile||'road-glide/viewer.js');if(!r.ok)throw Error('源码加载失败');return '// 完整依赖、模型和配置请下载 road-glide-kit.zip。此处展示该模板的运行 JS；配置与依赖在完整包内。\n'+await r.text();}
     if(e.type==='remake'){
       if(portableCache.has(e.id))return portableCache.get(e.id);
       const r=await fetch(e.file);if(!r.ok)throw Error('模板加载失败');let html=await r.text();
@@ -80,7 +80,7 @@
     }
     if(e.edition==='story-plus'){ $('#detail-instructions').innerHTML='<h3>故事如何推进</h3><p>'+esc(e.steps)+'</p><h3>设计自问</h3><p>'+esc(e.question)+'</p><h3>如何复用与证明能力</h3><p>'+esc(e.adapt)+'</p><h3>使用范围</h3><p>'+esc(e.limit)+'</p><a href="stories/READ-ME.txt" target="_blank">模板调用说明 ↗</a><h3>真实招聘依据</h3><div class="case-sources">'+e.jobs.map(id=>'<a href="career.html#job-'+esc(id)+'" target="_blank">查看岗位拆解 · '+esc(id)+' ↗</a>').join('')+'</div><p class="small">原创叙事实验。岗位来源与练习建议分开标注，不代表技能认证。</p>'; }
     if(e.edition==='motion-lab'){$('#detail-instructions a').href='motion/INTEGRATION.txt';$('#detail-instructions').insertAdjacentHTML('beforeend','<h3>本套参考来源</h3><div class="case-sources">'+e.sourceLinks.map(([label,url])=>'<a href="'+esc(safeURL(url))+'" target="_blank" rel="noopener">'+esc(label)+' ↗</a>').join('')+'</div><p><a href="motion-lab.html">打开提示词、来源与整包下载 ↗</a></p><p class="small">新增于 2026-10-22；验证范围见专题记录，不属于上一轮 60 套审计。</p>');}
-    if(e.assetBundle){$('#detail-instructions').innerHTML='<h3>操作路径</h3><p>'+esc(e.steps)+'</p><h3>替换与调用</h3><p>'+esc(e.adapt)+'</p><h3>实现边界</h3><p>'+esc(e.limit)+'</p><a href="road-glide/INTEGRATION.txt" target="_blank">模型接入说明 ↗</a><p>原始模型由用户提供；模型、商标与贴图不随原创代码授予 MIT 许可。详见 <a href="road-glide/MODEL-NOTICE.txt" target="_blank">模型来源说明</a>。</p><a href="studio.html" target="_blank">视觉工具台与可复制工作流 ↗</a>'; }
+    if(e.assetBundle){$('#detail-instructions').innerHTML='<h3>操作路径</h3><p>'+esc(e.steps)+'</p><h3>替换与调用</h3><p>'+esc(e.adapt)+'</p><h3>实现边界</h3><p>'+esc(e.limit)+'</p><a href="'+esc(e.instructionsFile||'road-glide/INTEGRATION.txt')+'" target="_blank">模型接入说明 ↗</a><p>原始模型由用户提供；模型、商标与贴图不随原创代码授予 MIT 许可。详见 <a href="road-glide/MODEL-NOTICE.txt" target="_blank">模型来源说明</a>。</p><a href="studio.html" target="_blank">视觉工具台与可复制工作流 ↗</a>'; }
     const audit=window.ATLAS_VALIDATION?.items.find(x=>x.id===e.id);if(audit)$('#detail-instructions').insertAdjacentHTML('beforeend','<h3>适用性审阅 / 2026.10.16</h3><p>'+esc(audit.gap)+'</p><p><strong>验收：</strong>'+esc(audit.test)+'</p><p class="small">源码检查完成；本轮浏览器与用户效果待验证。</p><a href="validation.html#'+audit.id+'" target="_blank" rel="noopener">查看判断依据 ↗</a>');
   $('#item-note').value=state.notes[e.id]||'';saveState();$('#detail').showModal();$('#detail').scrollTop=0;if(isTemplate)mountPreview();
   }
