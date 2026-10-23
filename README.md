@@ -148,3 +148,15 @@ SUPERGEAR 品牌和产品素材由项目方提供。参考品牌、案例及截�
 下载 [motion-kit.zip](dist/motion-kit.zip)；调用说明 [INTEGRATION.txt](dist/motion/INTEGRATION.txt)；验证记录 [checks.json](dist/motion/checks.json)。旧审计是 2026-10-16 的 60 套快照，本批另行记录。
 
 重建：`node scripts/build-motion-lab.cjs`，再运行 `node scripts/integrate-motion.cjs`。若重新运行旧素材库生成器，最后重新执行 integrate-motion 保留新增入口。
+
+
+## 2026-10-23 · 真实车型与视觉工具台
+
+- [视觉工具台](https://qihangwu74-create.github.io/supergear-interaction-atlas/dist/studio.html)：Motion、Paper.js、GrapesJS、Two.js、ZRender、Noto 的实际操作演示及导出。
+- [真实车型模板](https://qihangwu74-create.github.io/supergear-interaction-atlas/dist/road-glide/index.html)：2024 Road Glide 整车运镜、材质巡光、真实部件查看，三个入口共享 GLB。
+- 原 GLB 31,945,256 字节 → 网页 GLB 3,281,224 字节；保留 135 个网格，586,796 个三角面。减面与 Draco 压缩并非无损。
+- 本地启动：Node.js 运行 `node scripts/serve-road.cjs`，打开 http://127.0.0.1:4173/studio.html 。模型使用 ES Modules 和 Worker，不能保证直接双击 HTML 运行。
+- 下载 `dist/road-glide-kit.zip` 包含三个入口、共享模型、工具台、依赖、许可与启动说明。
+- Manim 示例脚本尚未渲染；PS Editor 尚未确认唯一项目。MotionSites 只记录来源，未安装远程 MCP、未获取付费资源。工作流 JSON 是提示词，不是假称正在运行的 Agent。
+- 模型来源及授权范围见 `dist/road-glide/MODEL-NOTICE.txt`。模型与商标不在原创代码许可内。第三方库许可原样保留。
+- 新增批次检查见 `dist/studio/verification.json`；浏览器演示验证不等于用户效果或实机性能验证。

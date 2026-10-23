@@ -1,0 +1,15 @@
+Road Glide / 真实车型交互模板
+
+启动：在仓库根目录运行 node scripts/serve-road.cjs，打开 http://127.0.0.1:4173/road-glide/ 。请使用 HTTP 服务，ES Modules / Draco 不能保证 file:// 双击运行。
+
+入口：index.html 叙事运镜；material.html 材质巡光；details.html 细节导览。三个入口共用同一份 GLB 缓存、viewer.js 与 config.js。
+
+修改：config.js 中编辑章节文字、position 相机位置、target 注视点与真实节点名称。坐标 Y 向上，Z 正方向为车头。替换资产时应重新测量范围与节点名称。
+
+调用：AtlasTemplate.getState(); AtlasTemplate.setState({mode:"story",progress:0.66}); AtlasTemplate.reset(); AtlasTemplate.destroy(); 监听 window 的 atlas:change 事件获取状态。
+
+集成：同源 iframe src="road-glide/index.html"，建议不加 sandbox；如加 sandbox，可信自有页面需要 allow-scripts allow-same-origin 才能加载模型模块与 Worker。不要用于不可信第三方页面。
+
+依赖：Three.js r160（MIT）、Draco（Apache 2.0）、Motion 12.23.24（MIT），本地 vendored，许可证随目录保存。模型许可单独见 MODEL-NOTICE.txt。
+
+验收：初始未入场时滚动不改变相机；进入后反向滚动恢复视角；减弱动态保留四关键视角；变体仅修改 carpaint；细节选中与高亮对应；模式切换、复位、窄屏、加载失败均应检查。

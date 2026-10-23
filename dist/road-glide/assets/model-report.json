@@ -1,0 +1,9 @@
+{
+  "sourceBytes": 31945256,
+  "sourceTriangles": 1296474,
+  "webTriangles": 586796,
+  "webBytes": 3281224,
+  "meshObjects": 135,
+  "method": "Decimate 0.42 only on meshes above 3500 faces; Draco level 7; positions 14 bit; retained material slots and embedded textures",
+  "date": "2026-10-23"
+}

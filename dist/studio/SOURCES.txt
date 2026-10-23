@@ -1,0 +1,17 @@
+核对日期：2026-10-23
+
+Motion https://motion.dev/docs/quick-start
+GrapesJS https://grapesjs.com/docs/
+Paper.js https://paperjs.org/reference/path/
+Two.js https://two.js.org/
+ZRender https://github.com/ecomfe/zrender
+Noto Emoji https://github.com/googlefonts/noto-emoji （实际 SVG 位于 2D/svg）
+Manim https://www.manim.community/
+MCP https://modelcontextprotocol.io/docs/getting-started/intro
+MotionSites https://motionsites.ai/mcp
+另一个同名项目 https://github.com/kvalen-code/Motionsites-Dev （指向 motionsites.dev）
+Three.js https://threejs.org/docs/pages/GLTFLoader.html
+Draco https://threejs.org/docs/pages/DRACOLoader.html
+
+六个浏览器工具已实接。Manim 为未渲染原创脚本；PS Editor 缺少唯一项目链接。MotionSites 服务未安装、未登录、未获取付费素材。MCP 本身不包含固定数量的动效资产。
+版本和接入用途见 tools.json，实测范围见 verification.json，许可证见 vendor。

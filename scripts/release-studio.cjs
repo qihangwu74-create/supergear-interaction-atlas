@@ -1,0 +1,5 @@
+const fs=require('fs'),p=require('path'),crypto=require('crypto'),root=p.resolve(__dirname,'..');
+function walk(dir){return fs.readdirSync(p.join(root,dir),{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(dir+'/'+e.name):[dir+'/'+e.name]);}
+const files=['README.md','dist/library.html','dist/library.js','dist/road-data.js','dist/studio.html',...walk('dist/road-glide'),...walk('dist/studio'),'dist/road-glide-kit.zip','scripts/prepare-road-glide.py','scripts/build-road-pages.cjs','scripts/serve-road.cjs','scripts/release-studio.cjs'];
+if(process.argv[2]==='list')console.log(JSON.stringify(files.filter(n=>fs.existsSync(p.join(root,n))).map(path=>{const b=fs.readFileSync(p.join(root,path));return {path,bytes:b.length,gitSha:crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex'),chunks:Math.ceil(b.toString('base64').length/55000)};})));
+else console.log(fs.readFileSync(p.join(root,process.argv[2])).toString('base64').slice(+process.argv[3]*55000,(+process.argv[3]+1)*55000));

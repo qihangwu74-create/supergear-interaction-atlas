@@ -1,0 +1,10 @@
+[
+{"id":"motion","name":"Motion","type":"浏览器动画库","status":"已实接","version":"12.23.24","use":"哈雷模板章节文字过渡；下方可试不同运动节奏。","limit":"动画库不自动决定叙事逻辑；本项目不依赖 Motion+ 付费资源。","url":"https://motion.dev/docs/quick-start"},
+{"id":"paper","name":"Paper.js","type":"矢量路径库","status":"已实接","version":"0.12.18","use":"镜头路径草图：调整轨迹弯曲，沿路径移动观察点，并导出 SVG。","limit":"二维构图草图，不会自动生成三维相机轨迹。","url":"https://paperjs.org/reference/path/"},
+{"id":"grapes","name":"GrapesJS","type":"可视化页面编辑器框架","status":"已实接","version":"0.22.13","use":"用产品介绍模块编辑标题、说明和配色，再导出 HTML。","limit":"编辑内容仅在本次页面内存中；导出后自行保存。不会自动发布到仓库。","url":"https://grapesjs.com/docs/"},
+{"id":"two","name":"Two.js","type":"二维场景绘图库","status":"已实接","version":"0.8.23","use":"从分散元素到有序网格，拖动滑杆预览重排，并导出 SVG。","limit":"适合二维编排；不是三维产品模型加载器。","url":"https://two.js.org/"},
+{"id":"zrender","name":"ZRender","type":"Canvas / SVG 绘图引擎","status":"已实接","version":"5.6.1","use":"以真实模型优化记录绘制体积对照，点击选择查看依据。","limit":"这不是业务效果提升数据，也不代表所有设备的性能。","url":"https://github.com/ecomfe/zrender"},
+{"id":"noto","name":"Noto Emoji","type":"图形与字体资源","status":"已实接","version":"官方 2D SVG / 2026-10-23","use":"本页使用官方闪光 SVG，提供尺寸预览和素材下载。","limit":"只引入一个实际使用的 SVG；没有安装整套字体。","url":"https://github.com/googlefonts/noto-emoji"},
+{"id":"manim","name":"Manim Community","type":"Python 数学动画引擎","status":"脚本待渲染","version":"未安装运行环境","use":"提供镜头插值讲解的原创 Python 示例，下载后可在 Manim 环境渲染。","limit":"本次没有渲染视频，不能当成已运行的浏览器模板。","url":"https://www.manim.community/"},
+{"id":"ps","name":"PS Editor","type":"名称待确认","status":"未确认项目","version":"缺少唯一项目链接","use":"保留这个线索；需要视频原链接或项目仓库才能确认具体实现。","limit":"没有把同名编辑器、Photoshop 或任意 MCP 当成你提到的项目，也没有安装未知程序。","url":null}
+]
