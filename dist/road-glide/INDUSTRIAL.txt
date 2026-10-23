@@ -4,7 +4,8 @@ ATLAS / INDUSTRIAL STUDIES — Road Glide 2024
 打开 http://127.0.0.1:4173/road-glide/industrial.html
 必须使用 HTTP 服务；不要直接双击 HTML。
 
-11 个入口（同一运行器，URL hash 选择模式）：
+12 个入口（默认 #story 引导叙事；其他模式仍可直接访问）：
+#story 六章边箱叙事；编排与复用说明见 NARRATIVE.txt。
 #explode 分层爆炸 / #assembly 分步回装 / #section 剖切
 #xray 透明覆盖件 / #isolate 清单与部件联动
 #mechanism 车轮旋转 / #flow 概念路径
@@ -21,7 +22,7 @@ window.AtlasIndustrial.getParts()
 window.AtlasIndustrial.destroy()
 window.AtlasTemplate 是同一 API 的别名。
 模型 ready 后才可 setState；监听 atlas:change 或检查 getState().ready。
-导出的 JSON 可恢复参数和笔记，镜头使用该模式默认构图，不保存自由旋转后的相机。
+导出的 v2 JSON 可恢复参数、笔记、章节和自由观察镜头；兼容 v1。浏览器书签可以继续上次观察。
 通过同源 iframe 嵌入时，保留相对模型、vendor、Draco 路径。
 不同源父页面不能直接读取 iframe 的 JavaScript；本版没有开放 postMessage 控制桥。
 
@@ -46,7 +47,7 @@ industrial.css / industrial.html：响应式界面。
 验证：
 浏览器回归入口 /qa-industrial.html，点击 Run checks。
 源码 scripts/integrate-industrial.cjs 将模式加入素材库。
-修改完后运行集成脚本，再运行 scripts/package-studio.ps1 更新完整下载包。
+修改完后运行集成脚本、scripts/finalize-narrative.cjs，再运行 scripts/package-studio.ps1 更新完整下载包。
 新增模式验证单独保存在 industrial-checks.json，不改写旧批次的历史审计。
 
 技术参考：

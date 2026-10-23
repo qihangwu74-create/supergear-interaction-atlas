@@ -174,3 +174,16 @@ SUPERGEAR 品牌和产品素材由项目方提供。参考品牌、案例及截�
 拆解是展示编排，剖切只裁剪已有网格，车轮绕估计轴心旋转，流向为概念路径；没有维修顺序、内部机构、CFD、碰撞或实车尺寸认证。包络默认模型单位，输入已知长度后才进行比例估算。
 
 更新步骤：修改工业模板 → 运行 `node scripts/integrate-industrial.cjs` → 浏览器打开 `/qa-industrial.html` 检查 → `scripts/package-studio.ps1` 更新下载包。历史审计保留原批次范围。
+
+## Narrative V2 — 2026-10-23
+
+新增 [六章车型叙事](dist/road-glide/industrial.html#story)：定位、高亮关系、原位引线展开、局部观察、固定镜头单变量比较、归位与记录。入口以引导叙事为主，保留 11 种自由观察工具。
+
+- 分章节取景，手动接管与恢复讲解；减少动态选项继续有效。
+- 中文部件别名与空间标注；透视、剖切、隔离之间保留选择和观察角度。
+- v2 状态导入导出与浏览器书签保存镜头、章节和笔记；兼容旧 v1 文件。
+- [人工任务验证表](dist/road-glide/study.html)：计时、结果、原话、归档恢复和 JSON 导出。真实用户理解效果尚未测量。
+- [配置与复用说明](dist/road-glide/NARRATIVE.txt)、[本版检查证据](dist/road-glide/narrative-checks.json)、[叙事回归入口](dist/qa-narrative.html)。
+- 共 80 个可运行模板入口、36 个官方资源、34 个参考案例（150 项）；真实车型入口 15 项。
+
+运行方式保持 `node scripts/serve-road.cjs`。更新下载包：先 `node scripts/integrate-industrial.cjs`，再 `node scripts/finalize-narrative.cjs`，最后运行 `scripts/package-studio.ps1`。没有新增外部运行依赖。

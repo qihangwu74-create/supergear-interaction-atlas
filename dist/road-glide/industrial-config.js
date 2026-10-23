@@ -1,5 +1,6 @@
 // Visual systems, not a manufacturer BOM or service disassembly sequence.
 export const modes = [
+ ['story','引导叙事','GUIDED STORY / LUGGAGE','从一个问题，到一个发现。','沿六个章节理解边箱与整车的关系。可以随时回看、自由观察或保存当前位置。','基于原模型的视觉观察路线；分组与展开方向不是制造商装配或维修流程。'],
  ['explode','分层爆炸','EXPLODE / UNDERSTAND THE WHOLE','把整体，展开成关系。','拖动进度，让车头、覆盖件、动力与轮组依次分离。点击部件可查看归属。','空间位移是展示编排，未校验真实拆卸路径或干涉。'],
  ['assembly','分步回装','ASSEMBLY / RETURN WITH CONTEXT','每一步，都回到它的位置。','从分离状态逐组回装。每一步都交代当前系统，最后回到完整车型。','这是结构认知顺序，不是维修手册或紧固顺序。'],
  ['section','动态剖切','SECTION / REVEAL THE INSIDE','移动切面，看见层次。','选择方向，拖动切面，观察模型已有的内部几何。','表面网格裁切，不补造实体截面；模型没有的内部件不会出现。'],

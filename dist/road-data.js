@@ -73,8 +73,37 @@ window.ATLAS_REMAKES.push(...[
   }
 ]);
 
+
+
 // INDUSTRIAL STUDIES
 window.ATLAS_REMAKES.push(...[
+  {
+    "id": "m-industrial-story",
+    "type": "remake",
+    "edition": "road-glide",
+    "assetBundle": true,
+    "sourceFile": "road-glide/industrial.js",
+    "instructionsFile": "road-glide/NARRATIVE.txt",
+    "title": "车型叙事 · 看懂尾部与边箱",
+    "cat": "动效叙事",
+    "brief": "从一个问题，到一个发现。",
+    "steps": "沿六个章节理解边箱与整车的关系。可以随时回看、自由观察或保存当前位置。",
+    "file": "road-glide/industrial.html#story",
+    "image": "road-glide/industrial-story.jpg",
+    "imageLabel": "真实模型 · 运行截图",
+    "three": true,
+    "refs": [],
+    "tags": [
+      "工业产品",
+      "爆炸拆解",
+      "Harley",
+      "真实模型",
+      "引导叙事",
+      "2026-10-23"
+    ],
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "limit": "基于原模型的视觉观察路线；分组与展开方向不是制造商装配或维修流程。"
+  },
   {
     "id": "m-industrial-explode",
     "type": "remake",
@@ -99,7 +128,7 @@ window.ATLAS_REMAKES.push(...[
       "分层爆炸",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "空间位移是展示编排，未校验真实拆卸路径或干涉。"
   },
   {
@@ -126,7 +155,7 @@ window.ATLAS_REMAKES.push(...[
       "分步回装",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "这是结构认知顺序，不是维修手册或紧固顺序。"
   },
   {
@@ -153,7 +182,7 @@ window.ATLAS_REMAKES.push(...[
       "动态剖切",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "表面网格裁切，不补造实体截面；模型没有的内部件不会出现。"
   },
   {
@@ -180,7 +209,7 @@ window.ATLAS_REMAKES.push(...[
       "透明透视",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "只显示原模型已有结构；透明渲染可能有表面叠加。"
   },
   {
@@ -207,7 +236,7 @@ window.ATLAS_REMAKES.push(...[
       "部件联动",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "清单来自模型分组，不代表采购 BOM 或完整零件数量。"
   },
   {
@@ -234,7 +263,7 @@ window.ATLAS_REMAKES.push(...[
       "机构运动",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "轴心按轮胎网格包围盒估计；不包含制动、传动与悬挂动力学。"
   },
   {
@@ -261,7 +290,7 @@ window.ATLAS_REMAKES.push(...[
       "原理路径",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "路径与粒子为概念示意，不是 CFD、真实管线或工程仿真。"
   },
   {
@@ -288,7 +317,7 @@ window.ATLAS_REMAKES.push(...[
       "配置探索",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "隐藏件与配色是视觉概念方案，不等于可购买或适配的配置。"
   },
   {
@@ -315,7 +344,7 @@ window.ATLAS_REMAKES.push(...[
       "空间包络",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "默认单位为模型单位；校准结果是网格包络估算，不是官方尺寸或安装间隙。"
   },
   {
@@ -342,7 +371,7 @@ window.ATLAS_REMAKES.push(...[
       "同步对比",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "两侧共用模型与镜头参数；差异仅来自可见性与演示配色。"
   },
   {
@@ -369,7 +398,8 @@ window.ATLAS_REMAKES.push(...[
       "检查叙事",
       "2026-10-23"
     ],
-    "adapt": "11 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
+    "adapt": "12 个模式共享真实模型、industrial.js 和 industrial-config.js。通过 AtlasIndustrial.getState / setState / reset 调用；状态 JSON 可导入导出。请下载完整包，用 HTTP 服务运行。",
     "limit": "这是外观与结构检查流程示例，不能诊断车辆故障。"
   }
 ]);
+{const i=window.ATLAS_REMAKES.findIndex(e=>e.id==="m-industrial-story");if(i>0)window.ATLAS_REMAKES.unshift(window.ATLAS_REMAKES.splice(i,1)[0]);}

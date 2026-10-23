@@ -1,0 +1,44 @@
+ATLAS / NARRATIVE V2 — 2026-10-23
+
+打开 industrial.html#story：六章边箱观察路线。
+定位 → 高亮关系 → 原位引线展开 → 局部观察 → 固定镜头单变量比较 → 归位与记录。
+入口默认进入引导叙事，旧的 11 种工具保留在“自由探索”中。
+
+复用与编排
+1. story-config.js 的 story.steps 定义章节标题、问题、过程、结论、视觉分组、取景方向、取景范围及标注。
+2. direction 是从观察目标朝相机的方向向量。渲染器按目标包围盒与容器比例自动计算距离。
+3. fit: whole（整车）、expanded（展开空间）、luggage（边箱网格）。
+4. action: whole / highlight / separate / detail / compare / return。
+5. labels 目前支持 luggage / tank / rearwheel，与 industrial-config.js 中的视觉系统对应。
+6. partNames 将原始模型名称映射为中文别名；原始名称仍在清单第二行保留，便于追溯和修改。
+7. 当前动作绑定此车型的 cofra 边箱命名和尾部分组。替换其他 GLB 时，先重映射名称、分组、展开向量与 fit 目标；不可仅替换文件后假定语义仍成立。
+8. 此版本提供源码级章节配置；尚无拖拽式模型分组或可视化镜头编辑器。
+
+调用示例（模型 ready 后）
+AtlasIndustrial.setState({mode:'story', chapter:2, spread:0.5, reduced:true})
+AtlasIndustrial.setState({mode:'story', chapter:4, storyLuggage:false})
+const saved = AtlasIndustrial.getState()
+AtlasIndustrial.setState(saved)
+
+镜头与保存
+getState() 返回 camera.position 与 camera.target 的三元素数组。
+setState() 含 camera 时立即恢复该观察角度；未提供 camera 时使用模式或章节默认构图。
+从 xray / isolate / section 相互切换，保留选择和当前镜头；重置按钮会清除当前模式操作。
+手动拖动、缩放或触控接管后，待执行运镜取消。点击“回到讲解视角”重新取景。
+章节由用户前进或返回，不做自动循环；减少动态开启后镜头和部件直接进入目标状态。
+导出格式为 atlas-industrial-v2，仍接受旧版 v1 状态文件。
+“保存当前位置”存储于当前浏览器的 atlas-industrial-bookmark-v2；换电脑请导出 JSON。
+状态包含观察笔记；分享文件前自行选择是否保留笔记。
+
+验证与证据
+qa-narrative.html：六章行为、原位归还、配置单变量、镜头/笔记恢复、输入校验、书签、跨模式连续性、390px 布局。
+qa-industrial.html：原有 11 种工具的功能回归。
+narrative-checks.json：本次实测结果。记录的 modelReadyMs 是本次本机加载时间，不是移动端网络性能承诺。
+study.html：人工任务验证表，四项任务，计时/独立完成/帮助/未完成/原话记录，可导出 JSON。
+真实用户理解效果尚未测量，不能将程序断言数量当成解决的设计问题数量。
+
+已知边界
+空间标签锚定系统包围盒中心，做屏幕边界和简单避让；不执行精确遮挡检测，可能显示在前景表面之上。
+原位引线连接边箱网格包围盒中心，不是安装点或螺栓位置。
+展开路径与顺序为视觉叙事；不代表维修指导、机械碰撞检查或官方适配配置。
+所有工程边界沿用 INDUSTRIAL.txt 和 MODEL-NOTICE.txt。

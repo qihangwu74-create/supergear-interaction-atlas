@@ -1,0 +1,301 @@
+{
+  "revision": "narrative-v2",
+  "date": "2026-10-23",
+  "environment": "Windows desktop, ChatGPT in-app browser, localhost. Mobile layout simulated in a 390px iframe; no physical mobile-device benchmark.",
+  "automated": {
+    "narrative": {
+      "passed": 28,
+      "total": 28,
+      "results": [
+        {
+          "name": "real model ready",
+          "pass": true
+        },
+        {
+          "name": "six chapter navigation",
+          "pass": true
+        },
+        {
+          "name": "starting composition shows all meshes",
+          "pass": true
+        },
+        {
+          "name": "Chinese mesh aliases",
+          "pass": true
+        },
+        {
+          "name": "context chapter selects luggage",
+          "pass": true
+        },
+        {
+          "name": "spatial labels present",
+          "pass": true
+        },
+        {
+          "name": "separation chapter moves parts",
+          "pass": true
+        },
+        {
+          "name": "story separation reversible",
+          "pass": true
+        },
+        {
+          "name": "story separation can resume",
+          "pass": true
+        },
+        {
+          "name": "detail restores model coordinates",
+          "pass": true
+        },
+        {
+          "name": "detail camera closer than opening",
+          "pass": true
+        },
+        {
+          "name": "single variable removes bag meshes",
+          "pass": true
+        },
+        {
+          "name": "comparison holds camera",
+          "pass": true
+        },
+        {
+          "name": "comparison restored",
+          "pass": true
+        },
+        {
+          "name": "closing restores all positions and visibility",
+          "pass": true
+        },
+        {
+          "name": "closing camera matches opening",
+          "pass": true
+        },
+        {
+          "name": "camera and note JSON round trip",
+          "pass": true
+        },
+        {
+          "name": "note is plain textarea text",
+          "pass": true
+        },
+        {
+          "name": "malformed camera rejected atomically",
+          "pass": true
+        },
+        {
+          "name": "browser bookmark restores full view",
+          "pass": true
+        },
+        {
+          "name": "section preserves selected mesh and camera",
+          "pass": true
+        },
+        {
+          "name": "isolate preserves selection",
+          "pass": true
+        },
+        {
+          "name": "animated detail uses settled target, not moving parts",
+          "pass": true
+        },
+        {
+          "name": "rapid chapter changes end at complete model",
+          "pass": true
+        },
+        {
+          "name": "story reset returns to chapter one",
+          "pass": true
+        },
+        {
+          "name": "390px viewport has no horizontal page overflow",
+          "pass": true,
+          "detail": {
+            "scroll": 375,
+            "client": 375
+          }
+        },
+        {
+          "name": "mobile chapter buttons remain available",
+          "pass": true
+        },
+        {
+          "name": "loading and rendering diagnostics available",
+          "pass": true,
+          "detail": {
+            "modelReadyMs": 243,
+            "drawCalls": 148,
+            "triangles": 625330
+          }
+        }
+      ]
+    },
+    "industrial": {
+      "passed": 36,
+      "total": 36,
+      "results": [
+        {
+          "name": "model ready",
+          "pass": true
+        },
+        {
+          "name": "render meshes loaded",
+          "pass": true,
+          "detail": 138
+        },
+        {
+          "name": "seven groups account for every mesh",
+          "pass": true
+        },
+        {
+          "name": "each group populated",
+          "pass": true
+        },
+        {
+          "name": "explosion moves meshes",
+          "pass": true
+        },
+        {
+          "name": "explosion fully reversible",
+          "pass": true
+        },
+        {
+          "name": "assembly starts separated",
+          "pass": true
+        },
+        {
+          "name": "assembly returns exact positions",
+          "pass": true
+        },
+        {
+          "name": "assembly reverse step",
+          "pass": true
+        },
+        {
+          "name": "cut plane x",
+          "pass": true
+        },
+        {
+          "name": "cut plane y",
+          "pass": true
+        },
+        {
+          "name": "cut plane z",
+          "pass": true
+        },
+        {
+          "name": "cut flip",
+          "pass": true
+        },
+        {
+          "name": "clipping removed on transition",
+          "pass": true
+        },
+        {
+          "name": "shell opacity control",
+          "pass": true
+        },
+        {
+          "name": "isolation hides remainder",
+          "pass": true
+        },
+        {
+          "name": "single mesh list selection",
+          "pass": true
+        },
+        {
+          "name": "wheel motion has named parts and rotation",
+          "pass": true
+        },
+        {
+          "name": "wheel reset",
+          "pass": true
+        },
+        {
+          "name": "rear wheel selection",
+          "pass": true
+        },
+        {
+          "name": "conceptual flow endpoint",
+          "pass": true
+        },
+        {
+          "name": "visibility config",
+          "pass": true
+        },
+        {
+          "name": "config changes do not leak",
+          "pass": true
+        },
+        {
+          "name": "calibrated envelope",
+          "pass": true
+        },
+        {
+          "name": "clear calibration",
+          "pass": true
+        },
+        {
+          "name": "second model exists",
+          "pass": true
+        },
+        {
+          "name": "B config updates",
+          "pass": true
+        },
+        {
+          "name": "compare switch resets original",
+          "pass": true
+        },
+        {
+          "name": "inspection reaches record step",
+          "pass": true
+        },
+        {
+          "name": "state round trip",
+          "pass": true
+        },
+        {
+          "name": "invalid state rejected",
+          "pass": true
+        },
+        {
+          "name": "reduced motion prevents autoplay",
+          "pass": true
+        },
+        {
+          "name": "play and pause flow",
+          "pass": true
+        },
+        {
+          "name": "animated assembly step ends",
+          "pass": true
+        },
+        {
+          "name": "reset after animation",
+          "pass": true
+        },
+        {
+          "name": "reset transform finite",
+          "pass": true
+        }
+      ]
+    }
+  },
+  "manual": [
+    "Canvas drag changes guide status to manual observation; return-to-guide restores framing.",
+    "Study form timer, result and note persist after reload; new record archives prior record and UI restores it.",
+    "Narrative overview and separation chapter visually inspected; original positions linked with dashed lines."
+  ],
+  "humanStudy": {
+    "status": "not-conducted",
+    "results": [],
+    "form": "study.html"
+  },
+  "limitations": [
+    "No measured user-comprehension or conversion improvement.",
+    "modelReadyMs is one local run, not a network/device performance guarantee.",
+    "Anchors use visual group bounding boxes and simple screen-space collision avoidance, not exact mesh occlusion.",
+    "Not a manufacturer service procedure; see INDUSTRIAL.txt."
+  ]
+}

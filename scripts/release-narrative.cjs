@@ -1,0 +1,6 @@
+const fs=require('fs'),p=require('path'),crypto=require('crypto'),root=p.resolve(__dirname,'..');
+const files=['README.md','dist/library.html','dist/road-data.js','dist/studio.html','dist/road-glide/industrial.html','dist/road-glide/industrial.css','dist/road-glide/industrial.js','dist/road-glide/industrial-config.js','dist/road-glide/story-config.js','dist/road-glide/NARRATIVE.txt','dist/road-glide/INDUSTRIAL.txt','dist/road-glide/study.html','dist/road-glide/study.js','dist/road-glide/narrative-checks.json','dist/road-glide/industrial-story.jpg','dist/qa-narrative.html','dist/qa-narrative.js','dist/road-glide-kit.zip','scripts/integrate-industrial.cjs','scripts/finalize-narrative.cjs','scripts/package-studio.ps1','scripts/release-narrative.cjs'];
+const sha=b=>crypto.createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex');
+if(process.argv[2]==='list')console.log(JSON.stringify(files.map(path=>{const b=fs.readFileSync(p.join(root,path));return {path,bytes:b.length,gitSha:sha(b),chunks:Math.ceil(b.toString('base64').length/55000)};})));
+else if(files.includes(process.argv[2]))console.log(fs.readFileSync(p.join(root,process.argv[2])).toString('base64').slice(+process.argv[3]*55000,(+process.argv[3]+1)*55000));
+else throw Error('Unknown release file');
